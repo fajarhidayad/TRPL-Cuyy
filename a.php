@@ -11,10 +11,11 @@
         if (pendaftaran($_POST)>0) {
             # code...
             echo "<script>
-            alert('User Baru Telah Ditambahkan!')
+            alert('Berhasil Daftar!')
             </script>
 
             ";
+            header("Location:index.php");
         }else{
             echo mysqli_error($conn);
         }
@@ -50,11 +51,11 @@
                 <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1">
                     <label class="form-check-label" for="formCheck-1">Perempuan</label></div>
                 <label>Tanggal Lahir</label>
-                <input class="form-control" type="date"><br>
-                <div class="form-group"><input class="form-control" type="text" name="kartu" placeholder="Kartu Kredit" id="kartuKredit"></div>
+                <input class="form-control" type="date" data-date-format="YYYY-MM-DD" name="tanggal_lahir"><br>
+                <div class="form-group"><input class="form-control" type="text" name="kartu_kredit" placeholder="Kartu Kredit" id="kartuKredit"></div>
                 <div class="form-group"><input class="form-control" type="text" name="sosmed" placeholder="Sosial Media" id="SosialMedia"></div>
-                <div class="form-group"><input class="form-control" type="number" name="nomor" placeholder="Nomer Telepon" id="telpon"></div>
-                <input type="file">
+                <div class="form-group"><input class="form-control" type="number" name="telepon" placeholder="Nomer Telepon" id="telpon"></div>
+                <input type="file" name="foto">
                     <div class="form-group">
                         <button class="btn btn-primary btn-block" type="submit" name="daftar">Daftar</button>
                     </div>

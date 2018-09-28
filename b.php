@@ -2,9 +2,6 @@
     session_start();
     require 'function.php';
 
-    
-
-    
 
     if(isset($_POST["login"])){
         $email      = $_POST["email"];
