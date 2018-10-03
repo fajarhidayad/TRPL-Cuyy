@@ -3,9 +3,6 @@
     
     require 'function.php';
 
-    
-    
-
     if (isset($_POST["daftar"])) {
         # code...
         if (pendaftaran($_POST)>0) {
