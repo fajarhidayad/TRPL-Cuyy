@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function(){
   Route::delete('quotes-comment/{id}', 'QuoteCommentController@destroy');
   Route::get('buat-toko', 'produkController@buatToko');
   Route::post('produk/{slug}', 'produkController@store');
+  Route::get('profile', 'Auth\RegisterController@lihat');
 });
 
 Route::get('/', function () {

@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-        <title>Laravel</title>
+        <title>Kerajinan.id</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -71,7 +71,7 @@
             <nav class="navbar navbar-inverse navbar-fixed-top" >
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Kerajinan.id</a>
+        <a class="navbar-brand" href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Kerajinan.id</a>
       </div>
       <ul class="nav navbar-nav">
         @if (Route::has('login'))
@@ -93,6 +93,20 @@
         @if (Route::has('login'))
                 @auth
                   <!-- <li><a href="{{ url('/home') }}">Home</a></li> -->
+                  <div class="dropdown">
+                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{Auth::user()->name}}
+                      <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="/profile">{{ __('Profile') }}</a> </li>
+                        <li class="divider"></li>
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">Logout</a> </li>
+
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                              @csrf
+                          </form>
+                      </ul>
+                  </div>
                 @else
                   <li><a href="{{ route('login') }}">Login</a></li>
                   <li><a href="{{ route('register') }}">Register</a></li>
@@ -144,7 +158,7 @@
           <img src=" minibus.jpg" alt="barang1">
           <div class="caption">
           <h3>Tongkat Kayu</h3>
-          
+
           <p><a href="#" class="btn btn-primary" role="button">Beli</a> <a href="#" class="btn btn-default" role="button">Detail</a></p>
           </div>
         </div>
@@ -173,7 +187,7 @@
     <nav class="navbar navbar-default">
     <p class="navbar-text">&copy 2018 Kerajinan.id</p>
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"> Hak Cipta Dilindungi <span class="glyphicon glyphicon-lock"></span></a></li>
+        <li><a href="#" style="margin-right: 10px;"> Hak Cipta Dilindungi <span class="glyphicon glyphicon-lock"></span></a></li>
       </ul>
   </nav>
 

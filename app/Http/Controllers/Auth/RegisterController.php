@@ -81,4 +81,11 @@ class RegisterController extends Controller
 
         ]);
     }
+
+    public function lihat($id)
+    {
+      $user = User::where('id','=',$id)->first();
+      dd($user);
+      return view('profile', compact('view'));
+    }
 }
