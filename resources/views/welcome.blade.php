@@ -93,7 +93,8 @@
         @if (Route::has('login'))
                 @auth
                   <!-- <li><a href="{{ url('/home') }}">Home</a></li> -->
-                  <div class="dropdown">
+                  <li><a href="{{url('jual')}}">Jual</a> </li>
+                  <li class="dropdown">
                     <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{Auth::user()->name}}
                       <span class="caret"></span></a>
                       <ul class="dropdown-menu">
@@ -106,7 +107,7 @@
                               @csrf
                           </form>
                       </ul>
-                  </div>
+                  </li>
                 @else
                   <li><a href="{{ route('login') }}">Login</a></li>
                   <li><a href="{{ route('register') }}">Register</a></li>
@@ -153,36 +154,20 @@
     </div><br>
     <div class="row">
       <h4>Barang Baru</h4>
+
+      @foreach($view as $data)
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img src=" minibus.jpg" alt="barang1">
+          <img src=" {{url('/gambar/'.$data->foto_produk)}}" alt="barang" style="width:200px;height:200px">
           <div class="caption">
-          <h3>Tongkat Kayu</h3>
+          <h3>{{$data->nama_produk}}</h3>
 
-          <p><a href="#" class="btn btn-primary" role="button">Beli</a> <a href="#" class="btn btn-default" role="button">Detail</a></p>
+          <p><a href="#" class="btn btn-primary" role="button">Beli</a> <a href="{{url('/produk/'.$data->slug_produk)}}" class="btn btn-default" role="button">Detail</a></p>
           </div>
         </div>
       </div>
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src=" minibus.jpg" alt="barang2">
-          <div class="caption">
-          <h3>Kaligrafi</h3>
+      @endforeach
 
-          <p><a href="#" class="btn btn-primary" role="button">Beli</a> <a href="#" class="btn btn-default" role="button">Detail</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src=" minibus.jpg" alt="barang3">
-          <div class="caption">
-          <h3>Tasbih</h3>
-
-          <p><a href="#" class="btn btn-primary" role="button">Beli</a> <a href="#" class="btn btn-default" role="button">Detail</a></p>
-          </div>
-        </div>
-      </div>
     </div>
     <nav class="navbar navbar-default">
     <p class="navbar-text">&copy 2018 Kerajinan.id</p>

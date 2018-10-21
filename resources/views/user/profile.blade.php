@@ -2,14 +2,10 @@
 
 @section('content')
 <div class="container">
-    <h1>Selamat Datang, {{$user->name}}</h1><br><br>
+    <h1>Selamat Datang, {{Auth::user()->name}}</h1><br><br>
     <div class="row">
 
-        <!-- <ul class="list-group">
-          @foreach ($user->quotes as $quote)
-            <li class="list-group-item"><a href="/quotes/{{$quote->slug}}">{{$quote->title}}</a></li>
-          @endforeach
-        </ul> -->
+      
 
         <div class="col-xs-6 col-md-3">
     		<a href="/produk" class="thumbnail">

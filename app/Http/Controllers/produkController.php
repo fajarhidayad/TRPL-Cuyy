@@ -16,13 +16,17 @@ class produkController extends Controller
 return view('produk.produk', compact('view'));
 }
 
-public function create(){
+public function tampil(){
+  $view = produk::all();
+  return view('welcome', compact('view'));
+}
+
+public function buat(){
   return view('produk.tambah');
 }
 
 public function lihat(Request $request, $id){
   $view = produk::where('slug_produk','=',$id)->first();
-  //dd($view);
   return view('produk.lihat', compact('view'));
 }
 
@@ -53,7 +57,7 @@ public function store(Request $request)
       'user_id' => Auth::user()->id
     ]);
 
-$view = produk::all();
+    $view = produk::all();
 
     return view('produk.produk', compact('view'));
 }

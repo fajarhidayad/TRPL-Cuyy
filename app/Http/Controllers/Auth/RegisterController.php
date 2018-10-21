@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Request;
 
 class RegisterController extends Controller
 {
@@ -82,10 +83,4 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function lihat($id)
-    {
-      $user = User::where('id','=',$id)->first();
-      dd($user);
-      return view('profile', compact('view'));
-    }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Toko;
 use App\Models\User;
+use Carbon\Carbon;
+use Auth;
 
 class tokoController extends Controller
 {
@@ -13,9 +15,9 @@ class tokoController extends Controller
       $this->validate($request, [
         'toko' => 'required|min:3',
         'alamat' => 'required|min:5',
-        'telpon' => 'required|min:5',
-        'alamat' => 'required|min:5',
+        'telepon' => 'required|min:5',
         'deskripsi' => 'required|min:5',
+        'fototoko' => 'required|mimes:jpeg,bmp,png',
       ]);
       //
       // $slug = str_slug($request->title, '-');
@@ -24,12 +26,23 @@ class tokoController extends Controller
       //   $slug = $slug . '-' .time();
       // }
 
-      $toko = Quote::create([
-        'title' => $request ->title,
-        'slug' => $slug,
-        'subject' => $request ->subject,
-        'user_id' => Auth::user()->id
+      $orname = $request->file('fototoko')->getClientOriginalName();
+      $filename = pathinfo($orname, PATHINFO_FILENAME);
+      $ext = $request->file('fototoko')->getClientOriginalExtension();
+      $tgl = Carbon::now()->format('dmYHis');
+      $newname = $filename . $tgl . "." . $ext;
+
+      $toko = ([
+        'nama_toko' => $request ->toko,
+        'alamat_toko' => $request->alamat,
+        'telepon' => $request ->telepon,
+        'deskripsi' => $request->deskripsi,
+        'foto_toko' => $newname,
+        'user_id' => Auth::user()->id,
       ]);
-      return redirect('quotes')->with('msg', 'kutipan berhasil disubmit');
+      // dd($toko);
+      $request->file('fototoko')->move("fototoko/", $newname);
+      Toko::create($toko);
+      return redirect('profile');
   }
 }

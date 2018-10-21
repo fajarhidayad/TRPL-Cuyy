@@ -34,7 +34,11 @@
   <li><a href="{{ url('/home') }}">Home</a></li>
   @endauth
   @endif
-  <li><a href="#"><li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li></a></li>
+  <li >
+    <a href="#">
+      <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+    </a>
+  </li>
 </ul>
 
 <form class="navbar-form navbar-left" action="/action_page.php">
@@ -47,6 +51,7 @@
   @if (Route::has('login'))
           @auth
             <!-- <li><a href="{{ url('/home') }}">Home</a></li> -->
+            <li><a href="{{url('jual')}}">Jual</a> </li>
           @else
             <li><a href="{{ route('login') }}">Login</a></li>
             <li><a href="{{ route('register') }}">Register</a></li>
@@ -54,23 +59,20 @@
 
 @endif
   <!-- <a class="nav-link" href="/profile">{{ __('Profile') }}</a> -->
-      <li class="dropdown">
-          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-              {{ Auth::user()->name }} <span class="caret"></span>
-          </a>
+  <li class="dropdown">
+    <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{Auth::user()->name}}
+      <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="/profile">{{ __('Profile') }}</a> </li>
+        <li class="divider"></li>
+        <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();">Logout</a> </li>
 
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="" href="{{ route('logout') }}"
-                 onclick="event.preventDefault();
-                               document.getElementById('logout-form').submit();">
-                  {{ __('Logout') }}
-              </a>
-
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
-              </form>
-          </div>
-      </li>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+          </form>
+      </ul>
+  </li>
 
 </ul>
 </div>
@@ -80,6 +82,6 @@
             @yield('content')
         </main>
     </div>
-    
+
 </body>
 </html>

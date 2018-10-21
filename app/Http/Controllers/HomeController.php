@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
+use App\Models\Toko;
 
 class HomeController extends Controller
 {
@@ -37,4 +38,32 @@ class HomeController extends Controller
 
       return view('profile', compact('user'));
     }
+
+    public function lihat(Request $request)
+    {
+      $user = User::where('id','=',Auth::User()->id)->first();
+      return view('profile', compact('user'));
+    }
+
+    public function jual()
+    {
+      $cektoko = Toko::where('user_id','=',Auth::User()->id)->first();
+      if (is_null($cektoko)) {
+        return redirect('toko-error');
+      }
+      else{
+      return view('user.profile');
+    }
+    }
+
+    public function ubah()
+    {
+      return view('user.ubah');
+    }
+
+    public function error()
+    {
+        return view('toko.belum');
+    }
+
 }

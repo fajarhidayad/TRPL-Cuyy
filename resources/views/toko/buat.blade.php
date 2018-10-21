@@ -13,22 +13,26 @@
       </div>
     @endif
 
-    <form method="post"  action = "\produk">
+    <form method="post" enctype="multipart/form-data"  action="/buat-toko">
+      <div class="form-group">
+        <label for="fototoko">Foto Toko</label>
+        <input type="file" accept="image/*" class="form-control" name="fototoko" placeholder="Nama Toko">
+      </div>
       <div class="form-group">
         <label for="toko">Nama Toko</label>
-        <input type="text" class="form-control" name="toko" value="{{old('title')}}" placeholder="Nama Toko">
+        <input type="text" class="form-control" name="toko" placeholder="Nama Toko">
       </div>
       <div class="form-group">
         <label for="alamat">Alamat Toko</label>
-        <input type="text" class="form-control" name="alamat" value="{{old('title')}}" placeholder="Alamat Toko">
+        <input type="text" class="form-control" name="alamat" placeholder="Alamat Toko">
       </div>
       <div class="form-group">
-        <label for="telpon">Telepon</label>
-        <input type="text" class="form-control" name="telpon" value="{{old('title')}}" placeholder="Telepon">
+        <label for="telepon">Telepon</label>
+        <input type="text" class="form-control" name="telepon" placeholder="Telepon">
       </div>
         <div class="form-group">
           <label for="deskripsi">Deskripsi Toko</label><br>
-          <textarea name="deskripsi" rows="8" cols="80" class="form-control">{{old('subject')}}</textarea>
+          <textarea name="deskripsi" rows="8" cols="80" class="form-control"></textarea>
         </div>
 
 

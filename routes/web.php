@@ -17,20 +17,24 @@ Route::group(['middleware' => 'auth'], function(){
   Route::put('quotes-comment/{id}', 'QuoteCommentController@update');
   Route::get('quotes-comment/{id}/edit', 'QuoteCommentController@edit');
   Route::get('produk', 'produkController@redir');
-  Route::get('produk/{id}', 'produkController@lihat');
-  Route::get('produk/tambah', 'produkController@create');
+  Route::get('produk/tambah', 'produkController@buat');
   Route::post('produk/tambah', 'produkController@store');
+  Route::get('produk/{id}', 'produkController@lihat');
   Route::delete('quotes-comment/{id}', 'QuoteCommentController@destroy');
   Route::get('buat-toko', 'produkController@buatToko');
   Route::post('produk/{slug}', 'produkController@store');
-  Route::get('profile', 'Auth\RegisterController@lihat');
+  Route::get('profile', 'HomeController@lihat');
+  Route::get('jual', 'HomeController@jual');
+  Route::get('ubah-profile', 'HomeController@ubah');
+  Route::get('toko-error', 'HomeController@error');
+  Route::post('buat-toko','tokoController@store');
 });
 
 Route::get('/', function () {
   return view('welcome');
 });
 Auth::routes();
-
+  Route::get('/', 'produkController@tampil');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile/{id?}', 'HomeController@profile');
 Route::get('/quotes/random', 'QuoteController@random');
