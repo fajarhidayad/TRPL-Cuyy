@@ -11,9 +11,16 @@ class Toko extends Model
       'nama_toko', 'alamat_toko', 'telepon', 'deskripsi','foto_toko', 'user_id'
   ];
 
+  protected $primaryKey = 'id_toko';
   public $timestamps=true;
 
     public function user(){
       return $this->hasOne('App\Models\User');
     }
+
+    public function produk()
+    {
+        return $this->hasMany('App\Models\produk');
+    }
+
 }

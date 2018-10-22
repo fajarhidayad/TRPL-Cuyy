@@ -6,14 +6,23 @@ use Auth;
 use App\Models\User;
 use App\Models\produk;
 use Illuminate\Http\Request;
+use App\Models\Toko;
+use Illuminate\Support\Facades\DB;
 
 
 class produkController extends Controller
 {
 
   public function redir() {
-    $view = produk::all();
-return view('produk.produk', compact('view'));
+    $view = DB::table('toko')
+            ->join('produk', 'produk.toko_id', '=', 'toko.id_toko')
+            ->join('users', 'users.id', '=', 'toko.user_id')
+            ->select('produk.*')
+            ->where('toko.user_id', '=', Auth::user()->id)
+            ->get();
+    $toko = Toko::where('id_toko','=',$view->toko_id)->first();
+
+    return view('produk.produk', compact('view','toko'));
 }
 
 public function tampil(){
@@ -27,8 +36,47 @@ public function buat(){
 
 public function lihat(Request $request, $id){
   $view = produk::where('slug_produk','=',$id)->first();
-  return view('produk.lihat', compact('view'));
+  $toko = Toko::where('id_toko','=',$view->toko_id)->first();
+
+  return view('produk.lihat', compact('view','toko'));
 }
+
+public function ubah(Request $request, $idproduk){
+  $view = produk::where('slug_produk','=',$idproduk)->first();
+  return view('produk.ubah', compact('view'));
+}
+
+
+public function update(Request $request, $idproduk)
+{
+    $produk = produk::where('slug_produk','=',$idproduk)->first();
+    if($request->foto==''){
+      $produk->foto_produk=$produk->foto_produk;
+    }
+    else{
+      $orname = $request->file('foto_produk')->getClientOriginalName();
+      $filename = pathinfo($orname, PATHINFO_FILENAME);
+      $ext = $request->file('foto_produk')->getClientOriginalExtension();
+      $tgl = Carbon::now()->format('dmYHis');
+      $newname = $filename . $tgl . "." . $ext;
+      $produk->foto_produk=$newname;
+      $request->file('fototoko')->move("gambar/", $newname);
+    }
+
+    $produk->nama_produk=$request->nama_produk;
+    $produk->deskripsi=$request->deskripsi;
+    $produk->harga=$request->harga;
+    $produk->stok=$request->stok;
+    $produk->berat=$request->berat;
+    $produk->kondisi_barang=$request->kondisi;
+    $produk->slug_produk=$produk->slug_produk;
+    $produk->save();
+
+    $view = produk::where('slug_produk','=',$idproduk)->first();
+    $toko = Toko::where('id_toko','=',$view->toko_id)->first();
+    return view('produk.lihat', compact('view','toko'));
+}
+
 
 public function store(Request $request)
 {

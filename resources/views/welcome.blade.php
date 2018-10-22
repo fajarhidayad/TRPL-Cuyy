@@ -161,6 +161,7 @@
           <img src=" {{url('/gambar/'.$data->foto_produk)}}" alt="barang" style="width:200px;height:200px">
           <div class="caption">
           <h3>{{$data->nama_produk}}</h3>
+          <h4>Rp. {{$data->harga}}</h4>
 
           <p><a href="#" class="btn btn-primary" role="button">Beli</a> <a href="{{url('/produk/'.$data->slug_produk)}}" class="btn btn-default" role="button">Detail</a></p>
           </div>

@@ -20,6 +20,8 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('produk/tambah', 'produkController@buat');
   Route::post('produk/tambah', 'produkController@store');
   Route::get('produk/{id}', 'produkController@lihat');
+  Route::get('produk/ubah/{idproduk}', 'produkController@ubah');
+  Route::post('produk/ubah/{idproduk}', 'produkController@update');
   Route::delete('quotes-comment/{id}', 'QuoteCommentController@destroy');
   Route::get('buat-toko', 'produkController@buatToko');
   Route::post('produk/{slug}', 'produkController@store');
