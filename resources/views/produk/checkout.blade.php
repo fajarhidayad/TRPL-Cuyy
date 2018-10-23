@@ -16,7 +16,7 @@
   <h5>Gambar : </h5>
 
   <h3>Total Harga : {{$total->total}}</h3>
-  <button type="button" class="btn btn-success">Bayar</button>
+  <button type="button" onclick="window.location.href='/bayar/{{$check->idkeranjang}}'" class="btn btn-success">Bayar</button>
 
 
 </div>

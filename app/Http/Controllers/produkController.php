@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Toko;
 use Illuminate\Support\Facades\DB;
 use App\Models\keranjang;
+use App\Models\pembayaran;
 
 
 class produkController extends Controller
@@ -128,6 +129,36 @@ public function masukkeranjang(Request $request, $id){
   $minstok->save();
 
   return redirect('keranjang');
+}
+
+public function masukbayar(Request $request, $id){
+  $bayar = keranjang::find($id);
+  //dd($bayar);
+  pembayaran::create([
+    'jumlah' => $bayar->jumlah,
+    'user_id' => $bayar->user_id,
+    'idbarang' => $bayar->idbarang,
+    'statuspembayaran' => '0',
+    'buktitransfer' => ''
+  ]);
+  $bayar->delete();
+  return view('produk.successpembayaran');
+}
+
+public function viewpembayaran(){
+  $view = DB::table('pembayaran')
+          ->join('produk', 'produk.id_produk', '=', 'pembayaran.idbarang')
+          ->join('users', 'users.id','=','pembayaran.user_id')
+          ->select('pembayaran.*', 'produk.*', 'users.alamat')
+          ->where('pembayaran.user_id', '=', Auth::user()->id)
+          ->get();
+  $total = DB::table('pembayaran')
+          ->join('produk', 'produk.id_produk', '=', 'pembayaran.idbarang')
+          ->select(DB::raw('SUM(jumlah*harga) as total'))
+          ->where('pembayaran.user_id', '=', Auth::user()->id)
+          ->first();
+  //dd($view, $total);
+  return view('produk.pembayaran', compact('view', 'total'));
 }
 
 public function hapusKeranjang($id){

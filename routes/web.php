@@ -33,6 +33,8 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('keranjang','produkController@lihatkeranjang');
   Route::get('hapusbarang/{id}','produkController@hapuskeranjang');
   Route::get('checkoutproduk/{id}','produkController@checkproduk');
+  Route::get('bayar/{id}','produkController@masukbayar');
+  Route::get('pembayaran','produkController@viewpembayaran');
   Route::post('masukkeranjang/{id}','produkController@masukkeranjang');
 });
 
