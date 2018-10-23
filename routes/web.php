@@ -30,6 +30,10 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('ubah-profile', 'HomeController@ubah');
   Route::get('toko-error', 'HomeController@error');
   Route::post('buat-toko','tokoController@store');
+  Route::get('keranjang','produkController@lihatkeranjang');
+  Route::get('hapusbarang/{id}','produkController@hapuskeranjang');
+  Route::get('checkoutproduk/{id}','produkController@checkproduk');
+  Route::post('masukkeranjang/{id}','produkController@masukkeranjang');
 });
 
 Route::get('/', function () {

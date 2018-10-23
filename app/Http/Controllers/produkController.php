@@ -8,6 +8,7 @@ use App\Models\produk;
 use Illuminate\Http\Request;
 use App\Models\Toko;
 use Illuminate\Support\Facades\DB;
+use App\Models\keranjang;
 
 
 class produkController extends Controller
@@ -20,7 +21,8 @@ class produkController extends Controller
             ->select('produk.*')
             ->where('toko.user_id', '=', Auth::user()->id)
             ->get();
-    $toko = Toko::where('id_toko','=',$view->toko_id)->first();
+    $toko = Toko::where('id_toko','=',$view->first()->toko_id);
+    //dd($toko);
 
     return view('produk.produk', compact('view','toko'));
 }
@@ -113,6 +115,65 @@ public function store(Request $request)
 public function buatToko(){
   return view('toko.buat');
 }
+
+public function masukkeranjang(Request $request, $id){
+  keranjang::create([
+    'jumlah' => $request->jumlahbarang,
+    'user_id' => Auth::User()->id,
+    'idbarang' => $id
+  ]);
+
+  $minstok = produk::find($id);
+  $minstok->stok = $minstok->stok - $request->jumlahbarang;
+  $minstok->save();
+
+  return redirect('keranjang');
+}
+
+public function hapusKeranjang($id){
+  $view = keranjang::find($id);
+  $produk = produk::find($view->idbarang);
+  $produk->stok = $produk->stok + $view->jumlah;
+  $produk->save;
+  $view->delete();
+  return redirect('keranjang');
+}
+
+public function checkproduk($id){
+
+  $check = DB::table('keranjang')
+          ->join('produk', 'produk.id_produk', '=', 'keranjang.idbarang')
+          ->join('users', 'users.id','=','keranjang.user_id')
+          ->select('keranjang.*', 'produk.*', 'users.alamat')
+          ->where('keranjang.user_id', '=', Auth::user()->id)
+          ->where('keranjang.idkeranjang','=',$id)
+          ->first();
+
+          $total = DB::table('keranjang')
+                  ->join('produk', 'produk.id_produk', '=', 'keranjang.idbarang')
+                  ->select(DB::raw('jumlah*harga as total'))
+                  ->where('keranjang.user_id', '=', Auth::user()->id)
+                  ->where('keranjang.idkeranjang','=',$id)
+                  ->first();
+
+  return view('produk.checkout',compact('check','total'));
+}
+
+public function lihatkeranjang(){
+  $view = DB::table('keranjang')
+          ->join('produk', 'produk.id_produk', '=', 'keranjang.idbarang')
+          ->join('users', 'users.id','=','keranjang.user_id')
+          ->select('keranjang.*', 'produk.*', 'users.alamat')
+          ->where('keranjang.user_id', '=', Auth::user()->id)
+          ->get();
+          $total = DB::table('keranjang')
+                  ->join('produk', 'produk.id_produk', '=', 'keranjang.idbarang')
+                  ->select(DB::raw('SUM(jumlah*harga) as total'))
+                  ->where('keranjang.user_id', '=', Auth::user()->id)
+                  ->first();
+  return view('produk.keranjang', compact('view','total'));
+}
+
 // public function show($slug)
 // {
 //     $quote = Quote::with('comments.user')->where('slug', $slug)->first();
