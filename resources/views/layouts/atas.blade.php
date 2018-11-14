@@ -22,7 +22,7 @@
 </head>
 <body>
     <!-- <div id="app"> -->
-      <nav class="navbar navbar-inverse" >
+      <nav class="navbar navbar-default" >
 <div class="container-fluid">
 <div class="navbar-header">
   <a class="navbar-brand" href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Kerajinan.id</a>
@@ -31,7 +31,7 @@
   @if (Route::has('login'))
           @auth
 
-  <li><a href="{{ url('/home') }}">Home</a></li>
+  <li><a href="{{ url('/') }}">Home</a></li>
   @endauth
   @endif
   <li >
@@ -64,7 +64,7 @@
       <span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><a href="/profile">{{ __('Profile') }}</a> </li>
-        <li><a href="#">Pembayaran</a> </li>
+        <li><a href="/pembayaran">Pembayaran</a> </li>
         <li><a href="#">Pesanan</a> </li>
         <li class="divider"></li>
         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();

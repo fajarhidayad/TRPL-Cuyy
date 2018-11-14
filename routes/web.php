@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('produk/{id}', 'produkController@lihat');
   Route::get('produk/ubah/{idproduk}', 'produkController@ubah');
   Route::post('produk/ubah/{idproduk}', 'produkController@update');
+  Route::post('profile', 'HomeController@update');
   Route::delete('quotes-comment/{id}', 'QuoteCommentController@destroy');
   Route::get('buat-toko', 'produkController@buatToko');
   Route::post('produk/{slug}', 'produkController@store');
@@ -36,6 +37,8 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('bayar/{id}','produkController@masukbayar');
   Route::get('pembayaran','produkController@viewpembayaran');
   Route::post('masukkeranjang/{id}','produkController@masukkeranjang');
+  Route::post('submitbukti/{id}','produkController@buktipembayaran');
+  Route::get('pengaturan-toko', 'tokoController@profilToko');
 });
 
 Route::get('/', function () {

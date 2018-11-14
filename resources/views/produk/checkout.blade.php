@@ -1,11 +1,6 @@
 @extends('layouts.atas')
 
 @section('content')
-
-
-<div class="container">
-    <!-- <h1>Selamat Datang, {{Auth::user()->name}}</h1><br><br> -->
-
     <div class="container">
   <h1>Checkout Barang</h1>
 
@@ -16,8 +11,11 @@
   <h5>Gambar : </h5>
 
   <h3>Total Harga : {{$total->total}}</h3>
+  @if($check->alamat!='')
   <button type="button" onclick="window.location.href='/bayar/{{$check->idkeranjang}}'" class="btn btn-success">Bayar</button>
-
-
+  @else
+  <p>Tidak dapat melakukan pembelian. Harap isi alamat melalui menu profile.</p>
+  <button type="button" class="btn btn-danger">Tidak dapat membeli</button>
+  @endif
 </div>
 @endsection

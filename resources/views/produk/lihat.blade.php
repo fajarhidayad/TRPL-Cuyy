@@ -23,8 +23,15 @@
       			<h3>Rp.{{$view->harga}}</h3><br>
       			<h4>Deskripsi Produk</h4>
       			<p>{{$view->deskripsi}}</p>
+            <h4>Stok Produk</h4>
+      			<p>{{$view->stok}}</p>
       			<br>
             <form method="post" action="/masukkeranjang/{{$view->id_produk}}">
+
+             
+              @if($toko->user_id==Auth::user()->id)
+
+            @else
               {{ csrf_field() }}
       				<label id="jumlah">Jumlah Barang</label><br>
               @if($view->stok==0)
@@ -34,8 +41,10 @@
               @endif
       			<br>
       		<div class="btn-group">
+
         			<button type="submit" class="btn btn-warning" @if($view->stok==0) disabled @endif>Beli Sekarang</button>
       			<button type="submit" class="btn btn-info" @if($view->stok==0) disabled @endif><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Tambah ke Keranjang</button>
+            @endif
             @if($toko->user_id==Auth::user()->id)
             <a href="/produk/ubah/{{$view->slug_produk}}" class="btn btn-primary">Ubah</a>
             @endif

@@ -56,9 +56,27 @@ class HomeController extends Controller
     }
     }
 
-    public function ubah()
+    public function ubah(Request $request)
     {
-      return view('user.ubah');
+      $view = User::where('id','=',Auth::User()->id)->first();
+      return view('user.ubah', compact('view'));
+    }
+
+    public function update(Request $request){
+      $profil = User::where('id', '=',Auth::User()->id)->first();
+
+      $profil->name = $request->name;
+      $profil->email = $request->email;
+      $profil->jenis_kelamin = $request->jenis_kelamin;
+      $profil->alamat = $request->alamat;
+      $profil->tanggal_lahir = $request->tanggal_lahir;
+      $profil->telepon = $request->telepon;
+      $profil->sosmed = $request->sosmed;
+      $profil->kartu_kredit = $request->kartu_kredit;
+      $profil->save();
+      
+      $user = User::where('id','=',Auth::User()->id)->first();
+      return view('profile', compact('user'));
     }
 
     public function error()

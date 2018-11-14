@@ -54,7 +54,7 @@
 
       {{ csrf_field() }}
 
-      <button type="submit" name="button" class="btn btn-primary float-right" >Submit Kutipan</button>
+      <button type="submit" name="button" class="btn btn-primary float-right" >Tambah</button>
     </form>
 </div>
 @endsection

@@ -23,7 +23,9 @@
                 height: 100vh;
                 margin: 0;
             }
-
+.container{
+  margin-top: 100px;
+}
             .full-height {
                 height: 100vh;
             }
@@ -68,7 +70,7 @@
         </style>
     </head>
     <body>
-            <nav class="navbar navbar-inverse navbar-fixed-top" >
+            <nav class="navbar navbar-default navbar-fixed-top" >
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Kerajinan.id</a>
@@ -77,7 +79,7 @@
         @if (Route::has('login'))
                 @auth
 
-        <li><a href="{{ url('/home') }}">Home</a></li>
+        <li><a href="{{ url('/') }}">Home</a></li>
         @endauth
         @endif
         <li><a href="#"><li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li></a></li>
@@ -99,6 +101,7 @@
                       <span class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <li><a href="/profile">{{ __('Profile') }}</a> </li>
+                        <li><a href="/pembayaran">Pembayaran</a></li>
                         <li class="divider"></li>
                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">Logout</a> </li>
@@ -130,15 +133,15 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
         <div class="item active">
-          <img src=" desk.jpg" alt="Los Angeles" style="width:100%;">
+          <img src=" 1.png" alt="Los Angeles" style="width:100%; height:500px;">
         </div>
 
         <div class="item">
-          <img src=" loft.jpg" alt="Chicago" style="width:100%;">
+          <img src=" 2.png" alt="Chicago" style="width:100%; height:500px;">
         </div>
 
         <div class="item">
-          <img src=" meeting.jpg" alt="New york" style="width:100%;">
+          <img src=" 3.png" alt="New york" style="width:100%; height:500px;">
         </div>
       </div>
 
@@ -163,7 +166,7 @@
           <h3>{{$data->nama_produk}}</h3>
           <h4>Rp. {{$data->harga}}</h4>
 
-          <p><a href="#" class="btn btn-primary" role="button">Beli</a> <a href="{{url('/produk/'.$data->slug_produk)}}" class="btn btn-default" role="button">Detail</a></p>
+          <p><a href="{{url('/produk/'.$data->slug_produk)}}" class="btn btn-primary" role="button">Beli</a> <a href="{{url('/produk/'.$data->slug_produk)}}" class="btn btn-default" role="button">Detail</a></p>
           </div>
         </div>
       </div>

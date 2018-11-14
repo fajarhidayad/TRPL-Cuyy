@@ -79,6 +79,7 @@ class RegisterController extends Controller
             'sosmed' => $data['sosmed'],
             'kartu_kredit' => $data['kartu_kredit'],
             'foto' => '',
+            'level' => '2',
 
         ]);
     }

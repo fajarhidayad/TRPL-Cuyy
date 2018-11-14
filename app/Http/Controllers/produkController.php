@@ -16,16 +16,17 @@ class produkController extends Controller
 {
 
   public function redir() {
-    $view = DB::table('toko')
-            ->join('produk', 'produk.toko_id', '=', 'toko.id_toko')
-            ->join('users', 'users.id', '=', 'toko.user_id')
+    $toko = Toko::where('user_id','=',Auth::User()->id)->first();
+    $view = DB::table('produk')
             ->select('produk.*')
-            ->where('toko.user_id', '=', Auth::user()->id)
+            ->where('produk.toko_id', '=', $toko->id_toko)
             ->get();
-    $toko = Toko::where('id_toko','=',$view->first()->toko_id);
     //dd($toko);
-
-    return view('produk.produk', compact('view','toko'));
+    if(is_null($toko)){
+  return redirect('toko-error');
+    } else{
+    return view('produk.produk', compact('view'));
+  }
 }
 
 public function tampil(){
@@ -40,6 +41,7 @@ public function buat(){
 public function lihat(Request $request, $id){
   $view = produk::where('slug_produk','=',$id)->first();
   $toko = Toko::where('id_toko','=',$view->toko_id)->first();
+  // dd($toko);
 
   return view('produk.lihat', compact('view','toko'));
 }
@@ -91,6 +93,9 @@ public function store(Request $request)
     // ]);
 
 
+$detail = toko::where('user_id','=',Auth::User()->id)->first();
+
+
     $slug = $request->nama_produk . '-' .time();
     //dd($request);
     $fileName   = $request->file('foto')->getClientOriginalName();
@@ -104,13 +109,13 @@ public function store(Request $request)
       'berat' => $request ->berat,
       'kondisi' => $request->kondisi,
       'slug_produk' => $slug,
-      'toko_id' => 0,
+      'toko_id' => $detail->id_toko,
       'user_id' => Auth::user()->id
     ]);
 
     $view = produk::all();
 
-    return view('produk.produk', compact('view'));
+    return view('/produk', compact('view'));
 }
 
 public function buatToko(){
@@ -146,6 +151,7 @@ public function masukbayar(Request $request, $id){
 }
 
 public function viewpembayaran(){
+  if(Auth::User()->level==2){
   $view = DB::table('pembayaran')
           ->join('produk', 'produk.id_produk', '=', 'pembayaran.idbarang')
           ->join('users', 'users.id','=','pembayaran.user_id')
@@ -159,6 +165,20 @@ public function viewpembayaran(){
           ->first();
   //dd($view, $total);
   return view('produk.pembayaran', compact('view', 'total'));
+}
+else if(Auth::User()->level==1){
+$view = DB::table('pembayaran')
+        ->join('produk', 'produk.id_produk', '=', 'pembayaran.idbarang')
+        ->join('users', 'users.id','=','pembayaran.user_id')
+        ->select('pembayaran.*', 'produk.*', 'users.*')
+        ->get();
+$total = DB::table('pembayaran')
+        ->join('produk', 'produk.id_produk', '=', 'pembayaran.idbarang')
+        ->select(DB::raw('SUM(jumlah*harga) as total'))
+        ->first();
+//dd($view, $total);
+return view('produk.pembayaran', compact('view', 'total'));
+}
 }
 
 public function hapusKeranjang($id){
@@ -203,6 +223,17 @@ public function lihatkeranjang(){
                   ->where('keranjang.user_id', '=', Auth::user()->id)
                   ->first();
   return view('produk.keranjang', compact('view','total'));
+}
+
+public function buktipembayaran(Request $request, $id){
+  $transfer = pembayaran::where('idpembayaran','=',$id);
+  $transfer->buktitransfer = $request->buktipembayaran;
+  $transfer->save();
+  return redirect('produk.pembayaran');
+}
+
+public function pengaturan(){
+  return view('toko.pengaturan');
 }
 
 // public function show($slug)

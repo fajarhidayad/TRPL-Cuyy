@@ -23,7 +23,7 @@
     		</a>
   		</div>
   		<div class="col-xs-6 col-md-3">
-    		<a href="#" class="thumbnail">
+    		<a href="pengaturan-toko" class="thumbnail">
       		<img src="setting.png" alt="setting"><br>Pengaturan
     		</a>
   		</div>

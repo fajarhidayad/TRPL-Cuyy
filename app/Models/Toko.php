@@ -14,13 +14,4 @@ class Toko extends Model
   protected $primaryKey = 'id_toko';
   public $timestamps=true;
 
-    public function user(){
-      return $this->hasOne('App\Models\User');
-    }
-
-    public function produk()
-    {
-        return $this->hasMany('App\Models\produk');
-    }
-
 }

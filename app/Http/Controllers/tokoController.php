@@ -45,4 +45,10 @@ class tokoController extends Controller
       Toko::create($toko);
       return redirect('profile');
   }
+
+  public function profilToko(Request $request){
+    $view = Toko::where('user_id','=',Auth::User()->id)->first();
+    // $produk = produk::where('toko_id', '=', $view->id_toko)->first();
+    return view('toko.pengaturan', compact('view', 'produk'));
+  }
 }
