@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Toko;
 
 class HomeController extends Controller
@@ -82,6 +83,52 @@ class HomeController extends Controller
     public function error()
     {
         return view('toko.belum');
+    }
+
+    public function alamat(Request $request, $id){
+     $check = DB::table('keranjang')
+          ->join('produk', 'produk.id_produk', '=', 'keranjang.idbarang')
+          ->join('users', 'users.id','=','keranjang.user_id')
+          ->select('keranjang.*', 'produk.*', 'users.alamat')
+          ->where('keranjang.user_id', '=', Auth::user()->id)
+          ->where('keranjang.idkeranjang','=',$id)
+          ->first();
+
+          $total = DB::table('keranjang')
+                  ->join('produk', 'produk.id_produk', '=', 'keranjang.idbarang')
+                  ->select(DB::raw('jumlah*harga as total'))  
+                  ->where('keranjang.user_id', '=', Auth::user()->id)
+                  ->where('keranjang.idkeranjang','=',$id)
+                  ->first();
+
+      $alamat = User::where('id', '=', Auth::user()->id)->first();
+      $alamat->alamat = $request->alamat.", ".$request->kelurahan.", ".$request->kecamatan.", ".$request->kabupaten.", ".$request->provinsi;
+      $alamat->save();
+
+      return view('produk.alamatPembayaran', compact('check', 'total','alamat'));
+    }
+
+    public function checkout(Request $request, $id){
+     $check = DB::table('keranjang')
+          ->join('produk', 'produk.id_produk', '=', 'keranjang.idbarang')
+          ->join('users', 'users.id','=','keranjang.user_id')
+          ->select('keranjang.*', 'produk.*', 'users.alamat')
+          ->where('keranjang.user_id', '=', Auth::user()->id)
+          ->where('keranjang.idkeranjang','=',$id)
+          ->first();
+
+          $total = DB::table('keranjang')
+                  ->join('produk', 'produk.id_produk', '=', 'keranjang.idbarang')
+                  ->select(DB::raw('jumlah*harga as total'))  
+                  ->where('keranjang.user_id', '=', Auth::user()->id)
+                  ->where('keranjang.idkeranjang','=',$id)
+                  ->first();
+
+      $alamat = User::where('id', '=', Auth::user()->id)->first();
+      $alamat->alamat = $request->alamat.", ".$request->kelurahan.", ".$request->kecamatan.", ".$request->kabupaten.", ".$request->provinsi;
+      $alamat->save();
+
+      return view('produk.checkout', compact('check', 'total','alamat'));
     }
 
 }

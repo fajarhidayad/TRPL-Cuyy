@@ -19,7 +19,7 @@
           <label for="">Kartu Kredit/Rekening</label><br>
 
         </div>
-        <div class="col-md-5">
+        <div class="col-md-8">
           :&#09;<label for="nama" class="" >{{$user->name}}</label> <br>
           :&#09;<label for=""> {{$user->alamat}}</label><br>
           :&#09;<label for=""> {{$user->jenis_kelamin}}</label><br>
@@ -35,8 +35,14 @@
         </div>
       </div>
       <div class="col-md-2">
-        <div class="jumbotron">
+        <div class="">
+          @if($user->foto == "")
+          <img src="/fotoprofil/picture.png" style="width: 150px; height: 150px" alt="Foto Profil"/><br>
+          
+          @else
           <img src="/fotoprofil/{{$user->foto}}" alt="Foto Profil"/>
+          @endif
+          
         </div>
       </div>
     </div>

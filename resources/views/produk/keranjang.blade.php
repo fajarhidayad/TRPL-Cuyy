@@ -28,8 +28,11 @@
         <td>{{$data->alamat}}</td>
         <td>Gambar</td>
         <td>
-          <button type="button" onclick="window.location.href='/produk/{{$data->slug_produk}}'" class="btn btn-info" title="Lihat Produk"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button> <button type="button" class="btn btn-danger" title="Hapus Data" onclick="window.location.href='/hapusbarang/{{$data->idkeranjang}}'"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          <button type="button" class="btn btn-success" title="Checkout Barang" onclick="window.location.href='/checkoutproduk/{{$data->idkeranjang}}'"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td>
+          <button type="button" onclick="window.location.href='/produk/{{$data->slug_produk}}'" class="btn btn-info" title="Lihat Produk"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button> 
+
+          <button type="button" class="btn btn-danger" title="Hapus Data" onclick="window.location.href='/hapusbarang/{{$data->idkeranjang}}'"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+          
+          <button type="button" class="btn btn-success" title="Checkout Barang" onclick="window.location.href='/alamat_pembayaran/{{$data->idkeranjang}}'"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td>
       </tr>
       @endforeach
     </tbody>
