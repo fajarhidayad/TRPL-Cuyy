@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Toko;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Carbon\Carbon;
 use Auth;
@@ -48,7 +49,11 @@ class tokoController extends Controller
 
   public function profilToko(Request $request){
     $view = Toko::where('user_id','=',Auth::User()->id)->first();
-    // $produk = produk::where('toko_id', '=', $view->id_toko)->first();
+    // $idtoko = $view->id_toko;
+    $produk = DB::table('produk')
+            ->select('produk.*')
+            ->where('produk.toko_id', '=', $view->id_toko)
+            ->get();
     return view('toko.pengaturan', compact('view', 'produk'));
   }
 }

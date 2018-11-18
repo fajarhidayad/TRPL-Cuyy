@@ -34,11 +34,25 @@
 		</div>
     <div class="row">
       <div class="col-md-5">
-        <label>Jumlah Produk</label>
+        <label>Semua Produk Toko</label>
       </div>
       <div class="col-md-5">
         
       </div>
+    </div>
+    <div class="row"><br>
+      @foreach($produk as $data)
+      <div class="col-xs-6 col-md-3">
+        <a href="{{url('/produk/'.$data->slug_produk)}}" class="thumbnail">
+        <img src="{{url('/gambar/'.$data->foto_produk)}}" alt="barang" style="width:150px;height:150px">
+        </a>
+        <h4>{{$data->nama_produk}}</h4>
+        {{$data->harga}}
+      </div>
+      @endforeach
+    </div>
+    <div style="margin-bottom: 50px;">
+      
     </div>
 </div>
 @endsection

@@ -138,13 +138,14 @@ public function masukkeranjang(Request $request, $id){
 
 public function masukbayar(Request $request, $id){
   $bayar = keranjang::find($id);
-  //dd($bayar);
+  $alamat = User::where('id', '=', Auth::User()->id)->first();
   pembayaran::create([
     'jumlah' => $bayar->jumlah,
     'user_id' => $bayar->user_id,
     'idbarang' => $bayar->idbarang,
     'statuspembayaran' => '0',
-    'buktitransfer' => ''
+    'buktitransfer' => '',
+    'alamat' => $alamat->alamat
   ]);
   $bayar->delete();
   return view('produk.successpembayaran');
@@ -226,10 +227,14 @@ public function lihatkeranjang(){
 }
 
 public function buktipembayaran(Request $request, $id){
-  $transfer = pembayaran::where('idpembayaran','=',$id);
-  $transfer->buktitransfer = $request->buktipembayaran;
+  $transfer = pembayaran::where('idpembayaran','=',$id)->first();
+    // dd($transfer);
+  $fileName = $request->file('buktipembayaran')->getClientOriginalName();
+  $request->file('buktipembayaran')->move("buktitransfer/", $fileName);
+  $transfer->buktitransfer = $fileName;
+  $transfer->statuspembayaran = 2;
   $transfer->save();
-  return redirect('produk.pembayaran');
+  return view('produk.pembayaran');
 }
 
 public function pengaturan(){

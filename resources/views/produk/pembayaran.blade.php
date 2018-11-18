@@ -32,6 +32,7 @@
         <th>Alamat</th>
         <th>Bukti Verifikasi</th>
         <th>Action</th>
+        <th>Verifikasi</th>
 
       </tr>
     </thead>
@@ -45,21 +46,36 @@
         <td>{{$data->jumlah}}</td>
         <td>Rp. {{$data->harga}}</td>
         <td>{{$data->alamat}}</td>
-        <td>@if($data->buktitransfer=='')Belum ada data @else<img src="{{$data->buktitransfer}}" />@endif</td>
+        <td>@if($data->buktitransfer=='')Belum ada data @else <a href="">{{$data->buktitransfer}}</a>@endif</td>
         <td>
           <button type="button" onclick="window.location.href='/produk/{{$data->slug_produk}}'" class="btn btn-info" title="Lihat Produk"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>
 
           @if(Auth::User()->level!=1)
-          <button type="button" class="btn btn-success" title="Checkout Barang" onclick="window.location.href='/checkoutproduk/{{$data->idpembayaran}}'"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-          
+
           <form enctype="multipart/form-data" id="form" method="post" action="{{url('/submitbukti/'.$data->idpembayaran)}}">
-                        {{csrf_field()}}
-                        <div class="file btn btn-primary">
-                          <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                          <input class="iform" id="upload" type="file" name="buktipembayaran" accept="image/*" required />
-                        </div>
+            @if($data->statuspembayaran!=0)
+              
+            @else
+            <div class="file btn btn-primary">
+                Upload Bukti
+                <input class="iform" id="upload" type="file" name="buktipembayaran" required>
+              </div>
+             {{csrf_field()}}
+
+            <button type="submit" class="btn btn-success" title="Checkout Barang" ><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+
+            @endif        
           </form>
           @endif
+        </td>
+        <td>@if($data->statuspembayaran==0)
+          Silahkan Upload Bukti Transfer
+          @elseif($data->statuspembayaran==2)
+          Proses Verifikasi
+          @else
+          Barang Sedang Dikemas
+          @endif
+          
         </td>
       </tr>
       @endforeach

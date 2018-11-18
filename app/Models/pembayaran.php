@@ -9,7 +9,7 @@ class pembayaran extends Model
   protected $table = 'pembayaran';
 protected $primaryKey = 'idpembayaran';
 protected $fillable = [
-      'jumlah', 'user_id', 'idbarang', 'statuspembayaran', 'buktitransfer'
+      'jumlah', 'user_id', 'idbarang', 'statuspembayaran', 'buktitransfer', 'alamat'
   ];
 
   public $timestamps=true;
