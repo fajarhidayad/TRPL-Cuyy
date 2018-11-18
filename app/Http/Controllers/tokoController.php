@@ -56,4 +56,14 @@ class tokoController extends Controller
             ->get();
     return view('toko.pengaturan', compact('view', 'produk'));
   }
+
+  public function kunjungiToko(Request $request, $nama_toko){
+    $view = Toko::where('nama_toko','=', $nama_toko)->first();
+    // $idtoko = $view->id_toko;
+    $produk = DB::table('produk')
+            ->select('produk.*')
+            ->where('produk.toko_id', '=', $view->id_toko)
+            ->get();
+    return view('toko.pengaturan', compact('view', 'produk'));
+  }
 }

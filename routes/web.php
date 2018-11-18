@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'], function(){
   Route::post('masukkeranjang/{id}','produkController@masukkeranjang');
   Route::post('submitbukti/{id}','produkController@buktipembayaran');
   Route::get('pengaturan-toko', 'tokoController@profilToko');
+  Route::get('toko/{nama_toko}', 'tokoController@kunjungiToko');
   Route::get('alamat_pembayaran/{id}', 'HomeController@alamat');
 });
 

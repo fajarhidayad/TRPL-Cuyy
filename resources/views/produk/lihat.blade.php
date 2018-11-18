@@ -15,7 +15,7 @@
       <div class="row">
       		<div class="col-sm-4">
       			<img src="{{url('/gambar/'.$view->foto_produk)}}" alt="gambar" class="img-responsive thumbnail"><br><br>
-      			<button type="button" class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Kunjungi Toko</button>
+      			<a href="/toko/{{$toko->nama_toko}}" class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Kunjungi Toko</a>
       		</div>
       		<div class="col-sm-1"></div>
       		<div class="col-sm-7">
