@@ -27,7 +27,7 @@
       <nav class="navbar navbar-default" >
 <div class="container-fluid">
 <div class="navbar-header">
-  <a class="navbar-brand" href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Kerajinan.id</a>
+  <a class="navbar-brand" href="{{ url('/') }}"><img src="img/icon.png" style="width: 100px; height: 30px;"></a>
 </div>
 <ul class="nav navbar-nav">
   @if (Route::has('login'))

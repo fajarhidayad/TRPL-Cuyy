@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lelang</title>
+  <title>List User</title>
   <link rel="shortcut icon"  href="img/logo.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -17,16 +17,19 @@
     h2 {
       margin-top: 150px;
       text-align: center;
-      font-weight: bold;
-      font-size: 25px;
+      color: whitesmoke;
 
     }
     .container {
       margin-top: 0px;
-      
+      padding: 50px;
+      width: 60%;
+      background-color: ;
+      border-radius: 10px;
     }
     body{
-      background-color: white;    
+      background:linear-gradient(#FDB674,whitesmoke); 
+      font-weight: bold;   
     }
     
 
@@ -81,31 +84,26 @@
     </ul>
   </div>
 </nav>
+<h2>Persyaratan mengikuti lelang</h2><br>
 
   <div class="container">
-  	<h2>Lelang</h2><br>
-        <div class="row">
-  <div class="col-md-12">
-    <a href="#" class="thumbnail">
-      <img src="img/icon.png" alt="...">
-    </a>
-  </div>
-  <div class="col-md-12">
-    <a href="#" class="thumbnail">
-      <img src="img/logo.png" alt="...">
-    </a>
-  </div>
-  <div class="col-md-12">
-    <a href="#" class="thumbnail">
-      <img src="..." alt="...">
-    </a>
-  </div>
-  <div class="col-md-12">
-    <a href="#" class="thumbnail">
-      <img src="..." alt="...">
-    </a>
-  </div>
-</div>
+        <p>Lelang adalah proses membeli dan menjual barang atau jasa dengan cara menawarkan kepada penawar, menawarkan tawaran harga lebih tinggi, dan kemudian menjual barang kepada penawar harga tertinggi. Dalam teori ekonomi, lelang mengacu pada beberapa mekanisme atau peraturan perdagangan dari pasar modal.</p>
+    <p>Lelang dalam kerajinan.id memiliki persyaratan sebagai berikut :</p>
+    <ul>
+      <li>1. Pelelang harus mengisi Saldo terlebih dahulu untuk mengikuti proses Lelang di kerajinan.id</li>
+    <li>2. Pelelang hanya boleh mengikuti pelelangan pada satu event lelang</li>
+    <li>3. Pelelang tidak boleh menambah harga jika harga tersebut masih tertinggi</li>
+    <li>4. Pelelang Tidak dapat memasukkan harga dibawah harga awal yang dimasukkan</li>
+    <li>5. Proses Pelelangan hanya berlangsung selama batas waktu yang ditentukan</li>
+    <li>6. Pelelang melakukan pembayaran setelah batas waktu lelang yang ditentukan telah berakhir</li>
+    <li>7. Batas waktu pembayaran Pelelang hanya berlangsung selama 2 jam,jika barang tidak dibayar maka akan dikenakan sanksi,dan lelang akan diberikan kepada harga tertinggi kedua.</li>
+</ul>
+
+  <form>
+    <input type="checkbox" name="checkbox"> Saya Menyetujui Persyaratan diatas
+  </form><br>
+  <button type="button" class="btn btn-success">Kirim</button>
+
 </div>
 
 </body>
