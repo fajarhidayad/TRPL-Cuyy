@@ -47,7 +47,7 @@
       </div>
     </div>
     <div class="row" style="float:right;">
-      <button type="button" name="button" class="btn btn-primary"><a href="ubah-profile" style="color:white">Ubah</a> </button>
+      <a href="ubah-profile" class="btn btn-primary" style="color:white">Ubah</a>
     </div>
 </div>
 @endsection

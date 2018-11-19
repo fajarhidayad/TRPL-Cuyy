@@ -40,9 +40,16 @@ class HomeController extends Controller
       return view('profile', compact('user'));
     }
 
+    public function admin(){
+      return view('admin.homeadmin');
+    }
+
     public function lihat(Request $request)
     {
       $user = User::where('id','=',Auth::User()->id)->first();
+      // if ($user->level==1) {
+      //   # code...
+      // }
       return view('profile', compact('user'));
     }
 

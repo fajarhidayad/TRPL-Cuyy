@@ -30,6 +30,9 @@
         <label><span class="glyphicon glyphicon-info-sign"></span> Deskripsi Toko</label><br>
         <div class="col-md-3"><h4>{{$view->deskripsi}}</h4></div>
       </div>
+      <div class="row">
+        <a href="" class="btn btn-primary">Ubah Toko</a>
+      </div>
     </div>
 		</div>
     <div class="row">

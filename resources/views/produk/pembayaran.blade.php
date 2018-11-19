@@ -46,7 +46,7 @@
         <td>{{$data->jumlah}}</td>
         <td>Rp. {{$data->harga}}</td>
         <td>{{$data->alamat}}</td>
-        <td>@if($data->buktitransfer=='')Belum ada data @else <a href="">{{$data->buktitransfer}}</a>@endif</td>
+        <td>@if($data->buktitransfer=='')Belum ada data @else <a href="{{url('/buktitransfer/'.$data->buktitransfer)}}">{{$data->buktitransfer}}</a>@endif</td>
         <td>
           <button type="button" onclick="window.location.href='/produk/{{$data->slug_produk}}'" class="btn btn-info" title="Lihat Produk"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>
 
