@@ -8,6 +8,20 @@
 	<div class="card-body">
                     <form method="POST" action="{{ url('profile') }}" enctype="multipart/from-data">
                         @csrf
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Ganti Foto</label>
+
+                            <div class="col-md-6">
+                                
+                                <input type="file" class="form-control{{ $errors->has('foto') ? ' is-invalid' : '' }}" name="foto">
+
+                                @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>

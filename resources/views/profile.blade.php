@@ -40,7 +40,7 @@
           <img src="/fotoprofil/picture.png" style="width: 150px; height: 150px" alt="Foto Profil"/><br>
           
           @else
-          <img src="/fotoprofil/{{$user->foto}}" alt="Foto Profil"/>
+          <img src="/fotoprofil/{{$user->foto}}" style="width: 150px; height: 150px"  alt="Foto Profil"/>
           @endif
           
         </div>

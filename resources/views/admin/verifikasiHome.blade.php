@@ -35,13 +35,13 @@
     <h3>Selamat Datang</h3><br>
   <div class="row">
   <div class="col-xs-6 col-md-4">
-    <a href="/admin/verifikasi" class="thumbnail">
-      <img src="adminn/admin.png" alt="...">
+    <a href="verifikasi/daftar-pembayaran" class="thumbnail">
+      Pembayaran
     </a>
   </div>
   <div class="col-xs-6 col-md-4">
     <a href="admin/lelang" class="thumbnail">
-      <img src="adminn/auction.png" alt="...">
+      Top-Up Saldo
     </a>
   </div>
   <div class="col-xs-6 col-md-4">

@@ -42,6 +42,13 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('pengaturan-toko', 'tokoController@profilToko');
   Route::get('toko/{nama_toko}', 'tokoController@kunjungiToko');
   Route::get('alamat_pembayaran/{id}', 'HomeController@alamat');
+  Route::get('admin', 'HomeController@admin');
+  Route::get('admin/list-pengguna', 'adminController@pengguna');
+  Route::get('admin/lelang', 'adminController@lelang');
+  Route::get('admin/verifikasi', 'adminController@verifikasi');
+  Route::get('admin/verifikasi/daftar-pembayaran', 'adminController@daftarPembayaran');
+  Route::get('pesanan', 'produkController@pesanan');
+
 });
 
 Route::get('/', function () {
@@ -53,4 +60,3 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile/{id?}', 'HomeController@profile');
 Route::get('/quotes/random', 'QuoteController@random');
 Route::resource('quotes', 'QuoteController', ['only' => ['index', 'show']]);
-Route::get('admin', 'HomeController@admin');

@@ -13,23 +13,23 @@
   <form method="POST" action="/checkoutproduk/{{$check->idkeranjang}}">
   <div class="form-group">
     <label for="inputalamat">Alamat</label>
-    <input type="text" name="alamat" class="form-control" id="inputalamat" placeholder="Alamat" style="width:64%;" required>
+    <input type="text" name="alamat" class="form-control" id="inputalamat" value="{{$alamat->alamat}}" placeholder="Alamat" style="width:64%;" required>
   </div>
   <div class="form-group">
     <label for="inputdesa">Kelurahan</label>
-    <input type="text" name="kelurahan" class="form-control" id="inputdesa" placeholder="Keluarahan" style="width:64%;" required>
+    <input type="text" name="kelurahan" class="form-control" id="inputdesa" value="{{$alamat->kelurahan}}" placeholder="Kelurahan" style="width:64%;" required>
   </div>
     <div class="form-group">
     <label for="inputkecamatan">Kecamatan</label>
-    <input type="text" name="kecamatan" class="form-control" id="inputkecamatan" placeholder="Kecamatan" style="width:64%;" required>
+    <input type="text" name="kecamatan" class="form-control" id="inputkecamatan" value="{{$alamat->kecamatan}}" placeholder="Kecamatan" style="width:64%;" required>
   </div>
   <div class="form-group">
     <label for="inputkabupaten">Kabupaten</label>
-    <input type="text" name="kabupaten" class="form-control" id="inputkabupaten" placeholder="Kabupaten" style="width:64%;" required>
+    <input type="text" name="kabupaten" class="form-control" id="inputkabupaten" value="{{$alamat->kabupaten}}" placeholder="Kabupaten" style="width:64%;" required>
   </div>
   <div class="form-group">
     <label for="inputprovinsi">Provinsi</label>
-    <input type="text" name="provinsi" class="form-control" id="inputprovinsi" placeholder="Provinsi" style="width:64%;" required>
+    <input type="text" name="provinsi" class="form-control" id="inputprovinsi" value="{{$alamat->provinsi}}" placeholder="Provinsi" style="width:64%;" required>
   </div>
     
      <div class="tombol-submit">

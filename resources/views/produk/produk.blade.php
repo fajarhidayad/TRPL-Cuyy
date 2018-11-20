@@ -24,5 +24,18 @@
   </div>
 @endforeach
 		</div>
+    <div class="row">
+      <h2>Stok Kosong</h2>
+      <div class="row">
+      @foreach($kosong as $kosongg)
+        <div class="col-xs-6 col-md-3">
+        <a href="{{url('/produk/'.$kosongg->slug_produk)}}" class="thumbnail">
+          <img src="{{url('/gambar/'.$kosongg->foto_produk)}}" alt="barang" style="width:150px;height:150px">
+        </a>
+        <h4>{{$kosongg->nama_produk}}</h4>
+        {{$kosongg->harga}}
+        </div>
+      @endforeach
+    </div>
 </div>
 @endsection

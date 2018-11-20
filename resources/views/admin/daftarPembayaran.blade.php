@@ -29,24 +29,27 @@
       text-align: center;
     }
   </style>
-</head>
-<body>
-
-
   <div class="container">
-  <h1>Daftar User</h1>
-          
+  <h1>Daftar Pembayaran User</h1>
+    <div class="row">
+    <div class="col-md-6 btn btn-info">
+      Belum Terverifikasi
+    </div>
+    <!-- <div class="col-md-2"></div> -->
+    <div class="col-md-6 btn btn-info">
+      Terverifikasi
+    </div>
+  </div><br>
   <table class="table">
     <thead>
       <tr>
-        <th>No</th>
         <th>Nama</th>
-        <th>E-mail</th>
+        <th>Nama Barang</th>
+        <th>Harga</th>
+        <th>Jumlah</th>
+        <th>Total</th>
         <th>Alamat</th>
-        <th>Jenis Kelamin</th>
-        <th>Tanggal Lahir</th>
-        <th>No Hp</th>
-        <th>Foto KTP</th>
+        <th>Bukti</th>
         <th>Action</th>
 
 
@@ -57,23 +60,21 @@
       @foreach($users as $user)
         
         <tr>
-          <td>{{$user->id}}</td>
           <td>{{$user->name}}</td>
-          <td>{{$user->email}}</td>
+          <td>{{$user->nama_produk}}</td>
+          <td>{{$user->harga}}</td>
+          <td>{{$user->jumlah}}</td>
+          <td>a</td>
           <td>{{$user->alamat}}</td>
-          <td>{{$user->jenis_kelamin}}</td>
-          <td>{{$user->tanggal_lahir}}</td>
-          <td>{{$user->telepon}}<td>
-          <td>{{$user->foto}}</td>
-          <td><button type="button" class="btn btn-info"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button></td>
+          <td><a href="{{url('/buktitransfer/'.$user->buktitransfer)}}">{{$user->buktitransfer}}</a></td>
+          <td><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td>
         </tr>
       @endforeach
 
       
     </tbody>
-    {{$users->links()}}
+    
   </table>
 </div>
 
-</body>
 @endsection

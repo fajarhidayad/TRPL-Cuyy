@@ -27,37 +27,11 @@
       <nav class="navbar navbar-default" >
 <div class="container-fluid">
 <div class="navbar-header">
-  <a class="navbar-brand" href="{{ url('/') }}"><img src="{{url('/icon.png')}}" style="width: 100px; height: 30px;"></a>
+  <a class="navbar-brand" href="{{ url('/admin') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Kerajinan.id</a>
 </div>
-<ul class="nav navbar-nav">
-  @if (Route::has('login'))
-          @auth
 
-  <li><a href="{{ url('/') }}">Home</a></li>
-  @endauth
-  @endif
-  <li >
-    <a href="#">
-      <li><a href="/keranjang"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-    </a>
-  </li>
-</ul>
-
-<form class="navbar-form navbar-left" action="/action_page.php">
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="Cari Disini" name="search">
-  </div>
-  <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search" aria-hidden="true">Cari</button>
-</form>
 <ul class="nav navbar-nav navbar-right" style="">
   @if (Route::has('login'))
-          @auth
-            <!-- <li><a href="{{ url('/home') }}">Home</a></li> -->
-            <li><a href="{{url('jual')}}">Jual</a> </li>
-          @else
-            <li><a href="{{ route('login') }}">Login</a></li>
-            <li><a href="{{ route('register') }}">Register</a></li>
-          @endauth
 
 @endif
   <!-- <a class="nav-link" href="/profile">{{ __('Profile') }}</a> -->
@@ -65,10 +39,7 @@
     <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{Auth::user()->name}}
       <span class="caret"></span></a>
       <ul class="dropdown-menu">
-        <li><a href="/profile">{{ __('Profile') }}</a> </li>
-        <li><a href="/pembayaran">Pembayaran</a> </li>
-        <li><a href="/pesanan">Pesanan</a> </li>
-        <li class="divider"></li>
+        <li><a href="/admin">Home</a></li>
         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
           document.getElementById('logout-form').submit();">Logout</a> </li>
 
@@ -82,10 +53,10 @@
 </div>
 </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <!-- <main class=""> -->
+            
     </div>
-
+    @yield('content')
+        <!-- </main> -->
 </body>
 </html>

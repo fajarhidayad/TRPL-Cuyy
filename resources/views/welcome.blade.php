@@ -9,7 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <title>Kerajinan.id</title>
-
+        <link rel="shortcut icon"  href="logo.png">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
 
@@ -73,7 +73,7 @@
             <nav class="navbar navbar-default navbar-fixed-top" >
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Kerajinan.id</a>
+        <a class="navbar-brand" href="{{ url('/') }}"><img src="icon.png" style="width: 100px; height: 30px;"></a>
       </div>
       <ul class="nav navbar-nav">
         @if (Route::has('login'))

@@ -41,16 +41,23 @@ class HomeController extends Controller
     }
 
     public function admin(){
-      return view('admin.homeadmin');
+      if (Auth::user()->level == 1) {
+        return view('admin.homeadmin');
+      }else{
+        return redirect('/');
+      }
+      
     }
 
     public function lihat(Request $request)
     {
       $user = User::where('id','=',Auth::User()->id)->first();
-      // if ($user->level==1) {
-      //   # code...
-      // }
-      return view('profile', compact('user'));
+      if ($user->level==1) {
+       return redirect('admin');
+      }else{
+        return view('profile', compact('user'));
+      }
+      
     }
 
     public function jual()
@@ -73,6 +80,10 @@ class HomeController extends Controller
     public function update(Request $request){
       $profil = User::where('id', '=',Auth::User()->id)->first();
 
+      $fileName   = $request->foto;
+    $request->file('foto')->move("fotoprofil/", $fileName);
+
+      $profil->foto = $request->foto;
       $profil->name = $request->name;
       $profil->email = $request->email;
       $profil->jenis_kelamin = $request->jenis_kelamin;
@@ -109,9 +120,11 @@ class HomeController extends Controller
                   ->first();
 
       $alamat = User::where('id', '=', Auth::user()->id)->first();
-      $alamat->alamat = $request->alamat.", ".$request->kelurahan.", ".$request->kecamatan.", ".$request->kabupaten.", ".$request->provinsi;
-      $alamat->save();
-
+      // $alamat->alamat = $request->alamat;
+      // $alamat->kelurahan = $request->kelurahan;
+      // $alamat->kecamatan = $request->kecamatan;
+      // $alamat->kabupaten = $request->kabupaten;
+      // $alamat->provinsi = $request->provinsi;
       return view('produk.alamatPembayaran', compact('check', 'total','alamat'));
     }
 
@@ -132,7 +145,11 @@ class HomeController extends Controller
                   ->first();
 
       $alamat = User::where('id', '=', Auth::user()->id)->first();
-      $alamat->alamat = $request->alamat.", ".$request->kelurahan.", ".$request->kecamatan.", ".$request->kabupaten.", ".$request->provinsi;
+      $alamat->alamat = $request->alamat;
+      $alamat->kelurahan = $request->kelurahan;
+      $alamat->kecamatan = $request->kecamatan;
+      $alamat->kabupaten = $request->kabupaten;
+      $alamat->provinsi = $request->provinsi;
       $alamat->save();
 
       return view('produk.checkout', compact('check', 'total','alamat'));

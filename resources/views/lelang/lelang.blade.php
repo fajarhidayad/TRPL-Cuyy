@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Lelang</title>
-  <link rel="shortcut icon"  href="img/logo.png">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+@extends('layouts.atasadmin')
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+@section('content')
 <style>
   *{
       font-family: 'Montserrat', sans-serif;
@@ -50,49 +41,17 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-fixed-top" >
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#"><img src="img/icon.png" style="width: 100px; height: 30px;"></a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kategori
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#"></a></li>
-          <li><a href="#">Kuliner</a></li>
-          <li><a href="#">Koleksi</a></li>
-        </ul>
-      </li>
-      <li><a href="#"><li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li></a></li>
-    </ul>
-
-    <form class="navbar-form navbar-left" action="/action_page.php">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Cari Disini" name="search">
-      </div>
-      <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></button>
-    </form>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
-
   <div class="container">
   	<h2>Lelang</h2><br>
         <div class="row">
   <div class="col-md-12">
     <a href="#" class="thumbnail">
-      <img src="img/icon.png" alt="...">
+      <img src="{{ asset('adminn/icon.png') }}" alt="...">
     </a>
   </div>
   <div class="col-md-12">
     <a href="#" class="thumbnail">
-      <img src="img/logo.png" alt="...">
+      <img src="{{ asset('adminn/logo.png') }}" alt="...">
     </a>
   </div>
   <div class="col-md-12">
@@ -109,4 +68,4 @@
 </div>
 
 </body>
-</html>
+@endsection

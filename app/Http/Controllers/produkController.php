@@ -20,17 +20,24 @@ class produkController extends Controller
     $view = DB::table('produk')
             ->select('produk.*')
             ->where('produk.toko_id', '=', $toko->id_toko)
+            ->where('produk.stok', '>', 0)
+            ->get();
+    $kosong =  DB::table('produk')
+            ->select('produk.*')
+            ->where('produk.toko_id', '=', $toko->id_toko)
+            ->where('produk.stok', '=', 0)
             ->get();
     //dd($toko);
     if(is_null($toko)){
   return redirect('toko-error');
     } else{
-    return view('produk.produk', compact('view'));
+    return view('produk.produk', compact('view', 'kosong'));
   }
 }
 
 public function tampil(){
-  $view = produk::all();
+  $view = DB::table('produk')->where('stok', '>', 0)->get();
+  
   return view('welcome', compact('view'));
 }
 
@@ -145,7 +152,7 @@ public function masukbayar(Request $request, $id){
     'idbarang' => $bayar->idbarang,
     'statuspembayaran' => '0',
     'buktitransfer' => '',
-    'alamat' => $alamat->alamat
+    'alamat' => $alamat->alamat.', '.$alamat->kelurahan.', '.$alamat->kecamatan.', '.$alamat->kabupaten.', '.$alamat->provinsi
   ]);
   $bayar->delete();
   return view('produk.successpembayaran');
@@ -156,7 +163,7 @@ public function viewpembayaran(){
   $view = DB::table('pembayaran')
           ->join('produk', 'produk.id_produk', '=', 'pembayaran.idbarang')
           ->join('users', 'users.id','=','pembayaran.user_id')
-          ->select('pembayaran.*', 'produk.*', 'users.alamat')
+          ->select('pembayaran.*', 'produk.*', 'users.*')
           ->where('pembayaran.user_id', '=', Auth::user()->id)
           ->get();
   $total = DB::table('pembayaran')
@@ -239,6 +246,11 @@ public function buktipembayaran(Request $request, $id){
 
 public function pengaturan(){
   return view('toko.pengaturan');
+}
+
+public function pesanan(){
+
+  return view('produk.pesanan');
 }
 
 // public function show($slug)

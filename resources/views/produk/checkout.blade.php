@@ -7,7 +7,7 @@
   <h3>Nama Produk : {{$check->nama_produk}}</h3>
   <h5>Jumlah yang dipesan : {{$check->jumlah}}</h5>
   <h5>Harga : Rp. {{$check->harga}}</h5>
-  <h5>Alamat Pembeli : {{$alamat->alamat}}</h5>
+  <h5>Alamat Pembeli : {{$alamat->alamat}}, {{$alamat->kelurahan}}, {{$alamat->kecamatan}}, {{$alamat->kabupaten}}, {{$alamat->provinsi}}</h5>
   <h5>Gambar : </h5>
 
   <h3>Total Harga : {{$total->total}}</h3>
