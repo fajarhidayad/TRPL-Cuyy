@@ -7,10 +7,13 @@
     }
     
     .container {
-      margin-top: 200px;
+      margin-top: 80px;
+      color:  #FFA07A;
     }
     body{
-      background-color:#eaeaea;
+      
+      background-image: url(admins/bgadmin.png);
+      background-size: cover;
     }
     .header{
       height: 500px;
@@ -30,13 +33,13 @@
     }
 </style>
 </head>
-
+  
   <div class="container">
-    <h3>Selamat Datang</h3><br>
+   <center> <img src="admins/haiadmin.png"> </center><br>
   <div class="row">
   <div class="col-xs-6 col-md-4">
     <a href="verifikasi/daftar-pembayaran" class="thumbnail">
-      Pembayaran
+       <img src="adminn/adminn.png" alt="...">
     </a>
   </div>
   <div class="col-xs-6 col-md-4">
@@ -44,11 +47,7 @@
       Top-Up Saldo
     </a>
   </div>
-  <div class="col-xs-6 col-md-4">
-    <a href="admin/list-pengguna" class="thumbnail">
-      <img src="adminn/buyer.png" alt="...">
-    </a>
-  </div>
+
 </div>
 
 </div>

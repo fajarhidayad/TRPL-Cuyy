@@ -7,14 +7,17 @@
     }
     
     .container {
-      margin-top: 200px;
+      margin-top: 80px;
+      color:  #FFA07A;
     }
     body{
       background-color:#eaeaea;
+      background-image: url(adminn/bgadmin.png);
+      background-size: cover;
     }
     .header{
       height: 500px;
-      background:linear-gradient(#FDB674,#fcbd83,whitesmoke);
+      background:linear-gradient(#FFA07A,#fcbd83,whitesmoke);
     }
      a{
       text-decoration: none;
@@ -32,21 +35,24 @@
 </head>
 
   <div class="container">
-    <h3>Selamat Datang</h3><br>
+   <center> <img src="adminn/haiadmin.png"> </center>
+    <h3></h3><br>
   <div class="row">
-  <div class="col-xs-6 col-md-4">
-    <a href="/admin/verifikasi" class="thumbnail">
-      <img src="adminn/admin.png" alt="...">
-    </a>
+  <div class="col-xs-6 col-md-4" style="color:  #FFA07A">
+    <a href="/admin/verifikasi"  >
+      <img src="adminn/adminn.png" alt="...">
+      
   </div>
   <div class="col-xs-6 col-md-4">
-    <a href="admin/lelang" class="thumbnail">
+    <a href="admin/lelang" >
       <img src="adminn/auction.png" alt="...">
+     
     </a>
   </div>
   <div class="col-xs-6 col-md-4">
-    <a href="admin/list-pengguna" class="thumbnail">
+    <a href="admin/list-pengguna" >
       <img src="adminn/buyer.png" alt="...">
+      
     </a>
   </div>
 </div>

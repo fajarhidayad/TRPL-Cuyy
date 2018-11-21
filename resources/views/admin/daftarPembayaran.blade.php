@@ -7,10 +7,12 @@
     }
     
     .container {
-      margin-top: 200px;
+      margin-top: 80px;
     }
     body{
-      background-color:#eaeaea;
+      
+      background-image: url(adminn/bgadmin.png);
+      background-size: cover;
     }
     .header{
       height: 500px;

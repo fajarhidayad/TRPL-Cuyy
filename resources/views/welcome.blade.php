@@ -16,7 +16,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background-color: #000000;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -70,7 +70,7 @@
         </style>
     </head>
     <body>
-            <nav class="navbar navbar-default navbar-fixed-top" >
+            <nav class="navbar navbar-inverse navbar-fixed-top" >
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="{{ url('/') }}"><img src="icon.png" style="width: 100px; height: 30px;"></a>
