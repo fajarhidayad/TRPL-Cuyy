@@ -35,16 +35,16 @@
 </head>
   
   <div class="container">
-   <center> <img src="admins/haiadmin.png"> </center><br>
+   <center> <img src="{{asset('admins/haiadmin.png')}}"> </center><br>
   <div class="row">
-  <div class="col-xs-6 col-md-4">
-    <a href="verifikasi/daftar-pembayaran" class="thumbnail">
-       <img src="adminn/adminn.png" alt="...">
+  <div class="col-xs-6 col-md-6 thumbnail" style="border:0;">
+    <a href="verifikasi/daftar-pembayaran">
+       <img src="{{asset('adminn/adminn.png')}}" alt="...">
     </a>
   </div>
-  <div class="col-xs-6 col-md-4">
-    <a href="admin/lelang" class="thumbnail">
-      Top-Up Saldo
+  <div class="col-xs-6 col-md-6">
+    <a href="admin/lelang" class="thumbnail" style="border:0;">
+        Top Up Saldo
     </a>
   </div>
 

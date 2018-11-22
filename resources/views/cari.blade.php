@@ -16,7 +16,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #000000;
+                background-color: #fff;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -70,25 +70,39 @@
         </style>
     </head>
     <body>
-            <nav class="navbar navbar-inverse navbar-fixed-top" >
+            <nav class="navbar navbar-default navbar-fixed-top" >
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="{{ url('/') }}"><img src="icon.png" style="width: 100px; height: 30px;"></a>
+        <a class="navbar-brand" href="{{ url('/') }}"><img src="{{url('icon.png')}}" style="width: 100px; height: 30px;"></a>
       </div>
       <ul class="nav navbar-nav">
         @if (Route::has('login'))
                 @auth
+
+        <!-- <li><a href="{{ url('/') }}">Home</a></li> -->
         @endauth
         @endif
-        <li><a href="#"><li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li></a></li>
+        <li><a href="/keranjang"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
       </ul>
 
       <form class="navbar-form navbar-left" action="/cari" method="get">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Cari Disini" name="search">
+          <input type="text" class="form-control" placeholder="Cari Disini" name="search" >
         </div>
         <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search" aria-hidden="true">Cari</button>
       </form>
+
+      <div class="navbar-form navbar-left">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Kategori<span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="/cari/filter/dekorasi">Dekorasi</a></li>
+          <li><a href="/cari/filter/fashion">Fashion</a></li>
+          <li><a href="/cari/filter/aksesoris">Aksesoris</a></li>
+        </ul>
+      </div>
+      </div>
+
       <ul class="nav navbar-nav navbar-right">
         @if (Route::has('login'))
                 @auth
@@ -120,41 +134,11 @@
 
 
   <div class="container">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner">
-        <div class="item active">
-          <img src=" 1.png" alt="Los Angeles" style="width:100%; height:500px;">
-        </div>
-
-        <div class="item">
-          <img src=" 2.png" alt="Chicago" style="width:100%; height:500px;">
-        </div>
-
-        <div class="item">
-          <img src=" 3.png" alt="New york" style="width:100%; height:500px;">
-        </div>
-      </div>
-
-      <!-- Left and right controls -->
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div><br>
+    <br>
     <div class="row">
-      <h4>Barang Baru</h4>
+
+      @if(count($view)>0)
+      <h4>Barang Yang Dicari</h4>
 
       @foreach($view as $data)
       <div class="col-sm-6 col-md-4">
@@ -169,6 +153,9 @@
         </div>
       </div>
       @endforeach
+      @else
+      <h1>Barang Tidak Ditemukan</h1>
+      @endif
 
     </div>
     <nav class="navbar navbar-default">

@@ -46,10 +46,8 @@
         <th>Jenis Kelamin</th>
         <th>Tanggal Lahir</th>
         <th>No Hp</th>
-        <th>Foto KTP</th>
+        <th>Foto</th>
         <th>Action</th>
-
-
       </tr>
     </thead>
     <tbody>
@@ -63,7 +61,7 @@
           <td>{{$user->alamat}}</td>
           <td>{{$user->jenis_kelamin}}</td>
           <td>{{$user->tanggal_lahir}}</td>
-          <td>{{$user->telepon}}<td>
+          <td>{{$user->telepon}}</td>
           <td>{{$user->foto}}</td>
           <td><button type="button" class="btn btn-info"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button></td>
         </tr>

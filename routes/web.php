@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('admin/verifikasi', 'adminController@verifikasi');
   Route::get('admin/verifikasi/daftar-pembayaran', 'adminController@daftarPembayaran');
   Route::get('pesanan', 'produkController@pesanan');
-
+  // Route::post('verifikasi', 'adminController@verifPesanan')
 });
 
 Route::get('/', function () {
@@ -58,5 +58,6 @@ Auth::routes();
   Route::get('/', 'produkController@tampil');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile/{id?}', 'HomeController@profile');
-Route::get('/quotes/random', 'QuoteController@random');
+Route::get('/cari', 'HomeController@cari');
+Route::get('/cari/filter/{kategori}', 'HomeController@filter');
 Route::resource('quotes', 'QuoteController', ['only' => ['index', 'show']]);

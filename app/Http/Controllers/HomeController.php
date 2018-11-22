@@ -30,6 +30,16 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function cari(Request $request){
+      $search_q = urlencode($request->input('search'));
+      
+      if (!empty($search_q))
+        $view = DB::table('produk')->where('nama_produk', 'like', '%'.$search_q.'%')->where('stok', '>', 0)->get();
+      else
+        $view = DB::table('produk')->where('stok', '>', 0)->get();
+      return view('cari', compact('view'));
+    }
+
     public function profile($id = null){
       if ($id==null) {
         $user = User::findOrFail(Auth::user()->id);
@@ -47,6 +57,12 @@ class HomeController extends Controller
         return redirect('/');
       }
       
+    }
+
+    public function filter($kategori)
+    {
+      $view = DB::table('produk')->where('kategori', '=', $kategori)->where('stok', '>', 0)->get();
+      return view('cari', compact('view'));
     }
 
     public function lihat(Request $request)
