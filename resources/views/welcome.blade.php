@@ -90,6 +90,17 @@
         </div>
         <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search" aria-hidden="true">Cari</button>
       </form>
+
+      <div class="navbar-form navbar-left">
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Kategori<span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="/cari/filter/dekorasi">Dekorasi</a></li>
+            <li><a href="/cari/filter/fashion">Fashion</a></li>
+            <li><a href="/cari/filter/aksesoris">Aksesoris</a></li>
+          </ul>
+        </div>
+      </div>
       <ul class="nav navbar-nav navbar-right">
         @if (Route::has('login'))
                 @auth

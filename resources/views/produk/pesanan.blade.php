@@ -18,22 +18,32 @@
 <div class="container" style="width: 1200px; height: auto; margin: auto; padding: 10px; background-color: rgba(0,0,0,0.5); font-size: 20px;">
   <h1> <center> Pesanan </center></h1>
   <p><center> Detail pesanan. </center></p>
+
   <table class="table table-condensed">
     <thead>
       <tr>
         <th>Nama Pembeli</th>
         <th>Nama Produk</th>
-        <th>Jumlah Produk</th>
-        <th>Harga</th>
         <th>Alamat</th>
-        <th>Bukti Verifikasi</th>
-        <th>Action</th>
-        <th>Verifikasi</th>
+        <th>Input Resi</th>
 
       </tr>
     </thead>
     <tbody>
-      
+     @foreach($toko as $user)
+      <tr>
+        <td>{{$user->name}}</td>
+        <td>{{$user->nama_produk}}</td>
+        <td>{{$user->harga}}</td>
+        <td>{{$user->jumlah}}</td>
+        {{-- <td>a</td> --}}
+        <td>{{$user->alamat}}</td>
+        <td><a href="{{url('/buktitransfer/'.$user->buktitransfer)}}">{{$user->buktitransfer}}</a></td>
+        <form method="post" action="{{ url('/verifikasi/'. $user->idpembayaran) }}">
+          <td><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>&nbsp; {{csrf_field()}}</form></td>
+        </form>
+      </tr>
+      @endforeach
     </tbody>
   </table>
   

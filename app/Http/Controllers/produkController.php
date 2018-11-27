@@ -241,7 +241,7 @@ public function buktipembayaran(Request $request, $id){
   $transfer->buktitransfer = $fileName;
   $transfer->statuspembayaran = 2;
   $transfer->save();
-  return view('produk.pembayaran');
+  return redirect('/pembayaran');
 }
 
 public function pengaturan(){
@@ -249,9 +249,18 @@ public function pengaturan(){
 }
 
 public function pesanan(){
-
-  return view('produk.pesanan');
+  $users = User::where(Auth::user()->first());
+  $toko = DB::table('pembayaran')
+                ->join('produk', 'produk.id_produk', '=', 'pembayaran.idbarang')
+                ->join('users', 'users.id', '=', 'pembayaran.user_id')
+                ->join('toko', 'toko.id_toko', '=', 'produk.toko_id')
+                ->where('pembayaran.statuspembayaran', '=', 1)
+                ->where('toko.user_id', '=', Auth::user())
+                ->get();
+  return view('produk.pesanan', compact('toko'));
 }
+
+
 
 // public function show($slug)
 // {

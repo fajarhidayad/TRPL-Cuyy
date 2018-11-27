@@ -120,8 +120,9 @@ a{
         <td>{{$user->alamat}}</td>
         <td><a href="{{url('/buktitransfer/'.$user->buktitransfer)}}">{{$user->buktitransfer}}</a></td>
         <form method="post" action="{{ url('/verifikasi/'. $user->idpembayaran) }}">
-          <td><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>&nbsp; {{csrf_field()}}</form><form action="">
-          <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
+          <td><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>&nbsp; {{csrf_field()}}</form>
+          <form method="post" action="{{ url('/verifikasi/hapus/'. $user->idpembayaran) }}">
+          <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>{{csrf_field()}}</td>
         </form>
       </tr>
       @endforeach
@@ -138,7 +139,6 @@ a{
         <th>Nama Barang</th>
         <th>Harga</th>
         <th>Jumlah</th>
-        <th>Total</th>
         <th>Alamat</th>
         <th>Bukti</th>
 
@@ -153,7 +153,6 @@ a{
         <td>{{$user->nama_produk}}</td>
         <td>{{$user->harga}}</td>
         <td>{{$user->jumlah}}</td>
-        <td>a</td>
         <td>{{$user->alamat}}</td>
         <td><a href="{{url('/buktitransfer/'.$user->buktitransfer)}}">{{$user->buktitransfer}}</a></td>
         

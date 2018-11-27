@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('admin/verifikasi/daftar-pembayaran', 'adminController@daftarPembayaran');
   Route::get('pesanan', 'produkController@pesanan');
   Route::post('verifikasi/{id}', 'adminController@verifPesanan');
+  Route::post('verifikasi/hapus/{id}', 'adminController@batalkanPesanan');
 });
 
 Route::get('/', function () {

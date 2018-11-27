@@ -57,4 +57,11 @@ class adminController extends Controller
         $verif->save();
         return redirect('admin/verifikasi/daftar-pembayaran');
     }
+
+    public function batalkanPesanan(){
+        $batal = pembayaran::where('idpembayaran', '=', $id)->first();
+        $batal->statuspembayaran = 4;
+        $batal->save();
+        return redirect('admin/verifikasi/daftar-pembayaran');
+}
 }
