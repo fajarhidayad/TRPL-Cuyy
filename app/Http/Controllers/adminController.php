@@ -51,8 +51,10 @@ class adminController extends Controller
     	return view('admin.daftarPembayaran', compact('users','total','userverif', 'user0'));
     }
 
-    // public function verifPesanan(Request $request){
-    //     DB::table('pembayaran')
-    //         ->where('')
-    // }
+    public function verifPesanan(Request $request, $id){
+        $verif = pembayaran::where('idpembayaran', '=', $id)->first();
+        $verif->statuspembayaran = 1;
+        $verif->save();
+        return redirect('admin/verifikasi/daftar-pembayaran');
+    }
 }
