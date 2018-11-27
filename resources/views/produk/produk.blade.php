@@ -2,8 +2,8 @@
 
 @section('content')
 
-
-<div class="container">
+<body style="background-image: url(bgadmin.png); background-size: cover; font-family: 'Niramit', sans-serif;">
+<div class="container" style="color: salmon;">
     <!-- <h1>Selamat Datang, {{Auth::user()->name}}</h1><br><br> -->
     <div class="container">
       <div class="row">

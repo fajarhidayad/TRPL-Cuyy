@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<body style="background-image: url(bgadmin.png); background-size: cover; font-family: 'Niramit', sans-serif;">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header" style="background-color: #000000; color:#FFA07A; ">{{ __('Daftar') }}</div>
 
-                <div class="card-body">
+                <div class="card-body" style="background-color: #000000;opacity: 0.9; filter: alpha(opacity=90); color: #FFA07A;">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/from-data">
                         @csrf
 
@@ -148,7 +149,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Daftar') }}
                                 </button>
                             </div>
                         </div>

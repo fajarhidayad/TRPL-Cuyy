@@ -12,6 +12,7 @@
         <link rel="shortcut icon"  href="logo.png">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Niramit" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
@@ -69,7 +70,7 @@
             }
         </style>
     </head>
-    <body>
+    <body style="background-image: url(bgadmin.png); background-size: cover; font-family: 'Niramit', sans-serif; color: salmon; ">
             <nav class="navbar navbar-default navbar-fixed-top" >
     <div class="container-fluid">
       <div class="navbar-header">
@@ -138,10 +139,10 @@
     <div class="row">
 
       @if(count($view)>0)
-      <h4>Barang Yang Dicari</h4>
+      <h1><center>Barang Yang Dicari</center> </h1>
 
       @foreach($view as $data)
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-6 col-md-4" >
         <div class="thumbnail">
           <img src=" {{url('/gambar/'.$data->foto_produk)}}" alt="barang" style="width:200px;height:200px">
           <div class="caption">

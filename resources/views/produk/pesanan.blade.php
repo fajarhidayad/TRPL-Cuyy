@@ -14,9 +14,10 @@
   top: 0;
 }
 </style>
-<div class="container">
-  <h2>Pembayaran</h2>
-  <p>Lanjutkan pembayaran atau lihat detail pembelian.</p>
+<body style="background-image: url(bgadmin.png); background-size: cover; font-family: 'Niramit', sans-serif; color: salmon; ">
+<div class="container" style="width: 1200px; height: auto; margin: auto; padding: 10px; background-color: rgba(0,0,0,0.5); font-size: 20px;">
+  <h1> <center> Pesanan </center></h1>
+  <p><center> Detail pesanan. </center></p>
   <table class="table table-condensed">
     <thead>
       <tr>
@@ -39,7 +40,7 @@
 </div>
 <script>
 document.getElementById("upload").onchange = function() {
-    document.getElementById("form").submit();
+  document.getElementById("form").submit();
 }
 </script>
 @endsection

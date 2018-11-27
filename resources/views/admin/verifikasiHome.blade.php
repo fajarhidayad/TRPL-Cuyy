@@ -32,6 +32,7 @@
       text-align: center;
     }
 </style>
+<body style="background-image: url(bgadmin.png); background-size: cover; font-family: 'Niramit', sans-serif;">
 </head>
   
   <div class="container">
@@ -39,12 +40,13 @@
   <div class="row">
   <div class="col-xs-6 col-md-6 thumbnail" style="border:0;">
     <a href="verifikasi/daftar-pembayaran">
-       <img src="{{asset('adminn/adminn.png')}}" alt="...">
+       <img src="{{asset('adminn/bayarproduk.png')}}" alt="...">
     </a>
   </div>
   <div class="col-xs-6 col-md-6">
-    <a href="admin/lelang" class="thumbnail" style="border:0;">
-        Top Up Saldo
+    <img src="{{asset('adminn/saldo.png')}}" alt="...">
+    
+      
     </a>
   </div>
 

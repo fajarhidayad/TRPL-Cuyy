@@ -2,52 +2,52 @@
 
 @section('content')
 <style>
-  *{
-      font-family: 'Montserrat', sans-serif;
-    }
-    
-    .container {
-      margin-top: 80px;
-    }
-    body{
-      
-      background-image: url(adminn/bgadmin.png);
-      background-size: cover;
-    }
-    .header{
-      height: 500px;
-      background:linear-gradient(#FDB674,#fcbd83,whitesmoke);
-    }
-     a{
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 15px;
-      color: #FDB674;
-    }
-    .container-fluid {
-      background-color: white;
-    }
-    .thumbnail {
-      text-align: center;
-    }
-    #sudah{
-      display: none;
-      width: 100%;
-    }
-    #belum{
-      width: 100%;
-    }
-    #bayar{
-      display: none;
-      width: 100%;
-    }
-  </style>
-  <div class="container">
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+  margin-top: 80px;
+}
+body{
+  
+  background-image: url(adminn/bgadmin.png);
+  background-size: cover;
+}
+.header{
+  height: 500px;
+  background:linear-gradient(#FDB674,#fcbd83,whitesmoke);
+}
+a{
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  color: #FDB674;
+}
+.container-fluid {
+  background-color: white;
+}
+.thumbnail {
+  text-align: center;
+}
+#sudah{
+  display: none;
+  width: 100%;
+}
+#belum{
+  width: 100%;
+}
+#bayar{
+  display: none;
+  width: 100%;
+}
+</style>
+<div class="container">
   <h1>Daftar Pembayaran User</h1>
-    <div class="row">
-      <div div id="button-bayar" class="col-md-4 btn btn-info">
-        Belum Bayar
-      </div>
+  <div class="row">
+    <div div id="button-bayar" class="col-md-4 btn btn-info">
+      Belum Bayar
+    </div>
     <div id="button-belum" class="col-md-4 btn btn-info">
       Belum Terverifikasi
     </div>
@@ -74,17 +74,17 @@
     <tbody>
       
       @foreach($user0 as $user)
+      
+      <tr>
+        <td>{{$user->name}}</td>
+        <td>{{$user->nama_produk}}</td>
+        <td>{{$user->harga}}</td>
+        <td>{{$user->jumlah}}</td>
+        <td>a</td>
+        <td>{{$user->alamat}}</td>
+        <td><a href="{{url('/buktitransfer/'.$user->buktitransfer)}}">{{$user->buktitransfer}}</a></td>
         
-        <tr>
-          <td>{{$user->name}}</td>
-          <td>{{$user->nama_produk}}</td>
-          <td>{{$user->harga}}</td>
-          <td>{{$user->jumlah}}</td>
-          <td>a</td>
-          <td>{{$user->alamat}}</td>
-          <td><a href="{{url('/buktitransfer/'.$user->buktitransfer)}}">{{$user->buktitransfer}}</a></td>
-          
-        </tr>
+      </tr>
       @endforeach
 
       
@@ -110,20 +110,20 @@
     <tbody>
       
       @foreach($users as $user)
-        
-        <tr>
-          <td>{{$user->name}}</td>
-          <td>{{$user->nama_produk}}</td>
-          <td>{{$user->harga}}</td>
-          <td>{{$user->jumlah}}</td>
-          <td>a</td>
-          <td>{{$user->alamat}}</td>
-          <td><a href="{{url('/buktitransfer/'.$user->buktitransfer)}}">{{$user->buktitransfer}}</a></td>
-          <form action="">
+      
+      <tr>
+        <td>{{$user->name}}</td>
+        <td>{{$user->nama_produk}}</td>
+        <td>{{$user->harga}}</td>
+        <td>{{$user->jumlah}}</td>
+        <td>a</td>
+        <td>{{$user->alamat}}</td>
+        <td><a href="{{url('/buktitransfer/'.$user->buktitransfer)}}">{{$user->buktitransfer}}</a></td>
+        <form action="">
           <td><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>&nbsp;</form><form action="">
           <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
-          </form>
-        </tr>
+        </form>
+      </tr>
       @endforeach
 
       
@@ -149,18 +149,18 @@
     <tbody>
       
       @foreach($userverif as $user)
-        
-        <tr>
-          <td>{{$user->name}}</td>
-          <td>{{$user->nama_produk}}</td>
-          <td>{{$user->harga}}</td>
-          <td>{{$user->jumlah}}</td>
-          <td>a</td>
-          <td>{{$user->alamat}}</td>
-          <td><a href="{{url('/buktitransfer/'.$user->buktitransfer)}}">{{$user->buktitransfer}}</a></td>
-          <td><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>&nbsp;
-          <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
-        </tr>
+      
+      <tr>
+        <td>{{$user->name}}</td>
+        <td>{{$user->nama_produk}}</td>
+        <td>{{$user->harga}}</td>
+        <td>{{$user->jumlah}}</td>
+        <td>a</td>
+        <td>{{$user->alamat}}</td>
+        <td><a href="{{url('/buktitransfer/'.$user->buktitransfer)}}">{{$user->buktitransfer}}</a></td>
+        <td><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>&nbsp;
+        <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
+      </tr>
       @endforeach
 
       
@@ -208,6 +208,6 @@ $('#button-bayar').click(function() {
    'display' : 'table',
    'width' : '100%'});
 });
-  
+
 </script>
 @endsection

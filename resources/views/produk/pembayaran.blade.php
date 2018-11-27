@@ -14,9 +14,11 @@
   top: 0;
 }
 </style>
-<div class="container">
-  <h2>Pembayaran</h2>
-  <p>Lanjutkan pembayaran atau lihat detail pembelian.</p>
+<body style="background-image: url(bgadmin.png); background-size: cover; font-family: 'Niramit', sans-serif; color: salmon; ">
+<div class="container" style="width: 1200px; height: auto; margin: auto; padding: 10px; background-color: rgba(0,0,0,0.5); font-size: 20px;">
+  <h1> <center> Pembayaran </center></h1>
+  <p><center> Lanjutkan pembayaran atau lihat detail pembelian. </center></p>
+  <hr>
   @if(count($view)==null)
   Tidak ada Barang dalam Pembayaran
   @else

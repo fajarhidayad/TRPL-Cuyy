@@ -1,12 +1,12 @@
 @extends('layouts.atas')
 
 @section('content')
-<div class="container">
-    <h1>Selamat Datang, {{$user->name}}</h1>
-    <h3>Profil</h3>
-    <h4>Kelola informasi profil Anda</h4>
+<body style="background-image: url(bgadmin.png); background-size: cover; font-family: 'Niramit', sans-serif;">
+<div class="container" style="width: 950px; margin: auto; color: salmon;">
+    <h1 style="font-size: 50px;">Selamat Datang, {{$user->name}}</h1>
+       <h2>Kelola informasi profil Anda</h2>
     <hr><br>
-    <div class="row">
+    <div class="row" style="width: 950px; margin: auto; height: 350px; padding: 10px; margin: 0px auto; background-color: rgba(0,0,0,0.5); font-size: 20px;">
       <div class="col-md-9">
         <div class="col-md-4">
           <label for="nama" class="" >Nama</label> <br>
@@ -42,12 +42,12 @@
           @else
           <img src="/fotoprofil/{{$user->foto}}" style="width: 150px; height: 150px"  alt="Foto Profil"/>
           @endif
-          
+          <div class="row" style="float:right; margin-top: 120px;">
+      <a href="ubah-profile" class="btn btn-primary" style="color:white">Ubah</a>
+    </div>
         </div>
       </div>
     </div>
-    <div class="row" style="float:right;">
-      <a href="ubah-profile" class="btn btn-primary" style="color:white">Ubah</a>
-    </div>
+    
 </div>
 @endsection

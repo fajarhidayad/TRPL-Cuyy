@@ -12,6 +12,7 @@
         <link rel="shortcut icon"  href="logo.png">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Niramit" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
@@ -69,7 +70,7 @@
             }
         </style>
     </head>
-    <body>
+    <body style=" background-size: cover; font-family: 'Niramit', sans-serif;">
             <nav class="navbar navbar-inverse navbar-fixed-top" >
     <div class="container-fluid">
       <div class="navbar-header">
@@ -154,7 +155,8 @@
       </a>
     </div><br>
     <div class="row">
-      <h4>Barang Baru</h4>
+      <center><img src="produkbaru.png"> </center>
+      <br>
 
       @foreach($view as $data)
       <div class="col-sm-6 col-md-4">

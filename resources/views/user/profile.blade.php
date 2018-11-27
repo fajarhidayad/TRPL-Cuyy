@@ -1,30 +1,29 @@
 @extends('layouts.atas')
 
 @section('content')
-<div class="container">
-    <h1>Selamat Datang, {{Auth::user()->name}}</h1><br><br>
-    <div class="row">
-
-      
+<body style="background-image: url(bgadmin.png); background-size: cover; font-family: 'Niramit', sans-serif;">
+<div class="container" style="margin-left: 40px; !important">
+    <h1 style="color: salmon; font-size: 50px;">Selamat Datang, {{Auth::user()->name}}</h1><br><br>
+    <div class="row">  
 
         <div class="col-xs-6 col-md-3">
-    		<a href="/produk" class="thumbnail">
-      		<img src="{{url('/giftbox.png')}}" alt="giftbox"><br>Produkku
+    		<a href="/produk">
+      		<img src="produkku.png" alt="giftbox">
     		</a>
   		</div>
   		<div class="col-xs-6 col-md-3">
-    		<a href="#" class="thumbnail">
-      		<img src="wallet.png" alt="wallet"><br>Penjualan Saya
+    		<a href="#">
+      		<img src="wallet.png" alt="wallet">
     		</a>
   		</div>
   		<div class="col-xs-6 col-md-3">
-    		<a href="#" class="thumbnail">
-      		<img src="auction.png" alt="auction"><br>Lelang
+    		<a href="#">
+      		<img src="adminn/auction.png" alt="auction">
     		</a>
   		</div>
   		<div class="col-xs-6 col-md-3">
-    		<a href="pengaturan-toko" class="thumbnail">
-      		<img src="setting.png" alt="setting"><br>Pengaturan
+    		<a href="pengaturan-toko">
+      		<img src="profiltoko.png" alt="setting">
     		</a>
   		</div>
     </div>
