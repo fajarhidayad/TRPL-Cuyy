@@ -248,16 +248,17 @@ public function pengaturan(){
   return view('toko.pengaturan');
 }
 
-public function pesanan(){
+public function penjualan(){
   $users = User::where(Auth::user()->first());
   $toko = DB::table('pembayaran')
                 ->join('produk', 'produk.id_produk', '=', 'pembayaran.idbarang')
                 ->join('users', 'users.id', '=', 'pembayaran.user_id')
                 ->join('toko', 'toko.id_toko', '=', 'produk.toko_id')
                 ->where('pembayaran.statuspembayaran', '=', 1)
-                ->where('toko.user_id', '=', Auth::user())
+                ->where('toko.user_id', '=', Auth::user()->id)
                 ->get();
-  return view('produk.pesanan', compact('toko'));
+                // dd($toko);
+  return view('produk.penjualan', compact('toko'));
 }
 
 

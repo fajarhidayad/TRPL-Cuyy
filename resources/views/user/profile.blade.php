@@ -12,7 +12,7 @@
     		</a>
   		</div>
   		<div class="col-xs-6 col-md-3">
-    		<a href="#">
+    		<a href="/penjualan">
       		<img src="wallet.png" alt="wallet">
     		</a>
   		</div>

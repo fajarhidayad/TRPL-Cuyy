@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth'], function(){
   Route::post('masukkeranjang/{id}','produkController@masukkeranjang');
   Route::post('submitbukti/{id}','produkController@buktipembayaran');
   Route::get('pengaturan-toko', 'tokoController@profilToko');
+  Route::get('pengaturan-toko/ubah', 'tokoController@ubahToko');
+  Route::post('pengaturan-toko/ubah', 'tokoController@ubah');
   Route::get('toko/{nama_toko}', 'tokoController@kunjungiToko');
   Route::get('alamat_pembayaran/{id}', 'HomeController@alamat');
   Route::get('admin', 'HomeController@admin');
@@ -47,7 +49,7 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('admin/lelang', 'adminController@lelang');
   Route::get('admin/verifikasi', 'adminController@verifikasi');
   Route::get('admin/verifikasi/daftar-pembayaran', 'adminController@daftarPembayaran');
-  Route::get('pesanan', 'produkController@pesanan');
+  Route::get('penjualan', 'produkController@penjualan');
   Route::post('verifikasi/{id}', 'adminController@verifPesanan');
   Route::post('verifikasi/hapus/{id}', 'adminController@batalkanPesanan');
 });

@@ -57,6 +57,34 @@ class tokoController extends Controller
     return view('toko.pengaturan', compact('view', 'produk'));
   }
 
+  public function ubahToko(){
+    $toko = Toko::where('user_id', '=', Auth::user()->id)->first();
+    return view('toko.ubah', compact('toko'));
+  }
+
+  public function ubah(Request $request){
+    $this->validate($request, [
+        'toko' => 'required|min:3',
+        'alamat' => 'required|min:5',
+        'telepon' => 'required|min:5',
+        'deskripsi' => 'required|min:5',
+        'fototoko' => 'required|mimes:jpeg,bmp,png',
+      ]);
+
+    $orname = $request->file('fototoko')->getClientOriginalName();
+      $filename = pathinfo($orname, PATHINFO_FILENAME);
+      $ext = $request->file('fototoko')->getClientOriginalExtension();
+
+      $toko = Toko::where('user_id', '=', Auth::user()->id)->first();
+      $toko->nama_toko = $request->toko;
+      $toko->alamat_toko = $request->alamat;
+      $toko->telepon = $request->telepon;
+      $toko->deskripsi = $request->deskripsi;
+      $toko->foto_toko = $filename.".".$ext;
+      $toko->save();
+      return redirect('pengaturan-toko');
+  }
+
   public function kunjungiToko(Request $request, $nama_toko){
     $view = Toko::where('nama_toko','=', $nama_toko)->first();
     // $idtoko = $view->id_toko;

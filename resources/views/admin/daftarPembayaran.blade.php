@@ -63,12 +63,7 @@ a{
         <th>Nama Barang</th>
         <th>Harga</th>
         <th>Jumlah</th>
-        <th>Total</th>
         <th>Alamat</th>
-        <th>Bukti</th>
-        <th>Action</th>
-
-
       </tr>
     </thead>
     <tbody>
@@ -80,7 +75,6 @@ a{
         <td>{{$user->nama_produk}}</td>
         <td>{{$user->harga}}</td>
         <td>{{$user->jumlah}}</td>
-        <td>a</td>
         <td>{{$user->alamat}}</td>
         <td><a href="{{url('/buktitransfer/'.$user->buktitransfer)}}">{{$user->buktitransfer}}</a></td>
         

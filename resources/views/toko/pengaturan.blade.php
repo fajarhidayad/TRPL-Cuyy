@@ -33,7 +33,7 @@
         <div class="col-md-3"><h4>{{$view->deskripsi}}</h4></div>
       </div>
       <div class="row" style="margin-left: 500px">
-        <a href="" class="btn btn-primary">Ubah Toko</a>
+        <a href="pengaturan-toko/ubah" class="btn btn-primary">Ubah Toko</a>
       </div>
     </div>
 		</div>
