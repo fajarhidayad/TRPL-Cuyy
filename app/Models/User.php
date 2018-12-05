@@ -45,4 +45,8 @@ class User extends Authenticatable
       return $this->hasOne('App\Models\Toko');
     }
 
+    public function user(){
+      return $this->hasOne('App\Models\saldo');
+  }
+
 }

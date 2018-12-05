@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Auth;
+use App\Models\saldo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Toko;
+use App\Models\pembayaran_saldo;
 
 class HomeController extends Controller
 {
@@ -41,13 +43,17 @@ class HomeController extends Controller
   }
 
   public function profile($id = null){
+    $iduser = Auth::user()->id;
+    $saldo = saldo::where('id', '=', Auth::user()->id);
     if ($id==null) {
       $user = User::findOrFail(Auth::user()->id);
+    }elseif ($id!=$iduser) {
+      return view('profile', compact('user', 'saldo'));
     }else {
       $user = User::findOrFail($id);
     }
 
-    return view('profile', compact('user'));
+    return view('profile', compact('user', 'saldo'));
   }
 
   public function admin(){
@@ -67,13 +73,30 @@ class HomeController extends Controller
 
   public function lihat(Request $request)
   {
+    $saldo = saldo::where('iduser', Auth::user()->id)->first();
+    // dd(!empty($saldo->iduser));
     $user = User::where('id','=',Auth::User()->id)->first();
     if ($user->level==1) {
      return redirect('admin');
-   }else{
-    return view('profile', compact('user'));
+   }else if (!empty($saldo->iduser)) {
+      return view('profile', compact('user', 'saldo'));
+   } else{
+    $saldo = saldo::create([
+            'saldo' => 0,
+            'iduser' => Auth::User()->id
+         ]);
+        return view('profile', compact('user', 'saldo'));
   }
 
+}
+
+public function topupp(){
+  return view('topup');
+}
+
+public function isiSaldo($saldo){
+  $users = User::where('id', '=', Auth::user()->id)->first();
+  return view('checkoutsaldo', compact('saldo', 'users'));
 }
 
 public function jual()
@@ -85,6 +108,19 @@ public function jual()
 else{
   return view('user.profile');
 }
+}
+
+public function bayartopup(Request $request){
+  $jumlah = intval($request->saldo);
+  $id = saldo::where('iduser', '=', Auth::user()->id)->first();
+  $bayar = pembayaran_saldo::create([
+    'user_id' => Auth::user()->id,
+    'jumlah' => $jumlah,
+    'bukti' => "",
+    'status' => "0",
+    'idsaldo' => $id->idsaldo,
+  ]);
+  return view('produk.successpembayaran');
 }
 
 public function ubah(Request $request)

@@ -44,25 +44,8 @@
   <div class="container">
   	<h2>Lelang</h2><br>
         <div class="row">
-  <div class="col-md-12">
-    <a href="#" class="thumbnail">
-      <img src="{{ asset('adminn/icon.png') }}" alt="...">
-    </a>
-  </div>
-  <div class="col-md-12">
-    <a href="#" class="thumbnail">
-      <img src="{{ asset('adminn/logo.png') }}" alt="...">
-    </a>
-  </div>
-  <div class="col-md-12">
-    <a href="#" class="thumbnail">
-      <img src="..." alt="...">
-    </a>
-  </div>
-  <div class="col-md-12">
-    <a href="#" class="thumbnail">
-      <img src="..." alt="...">
-    </a>
+  <div class="col-md-3">
+    <a href="tambahlelang" class="btn btn-primary">Tambah Event Lelang</a>
   </div>
 </div>
 </div>

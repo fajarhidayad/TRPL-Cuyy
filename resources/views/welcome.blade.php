@@ -81,7 +81,7 @@
                 @auth
         @endauth
         @endif
-        <li><a href="#"><li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li></a></li>
+       <li><a href="/keranjang"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
       </ul>
 
       <form class="navbar-form navbar-left" action="/cari" method="get">

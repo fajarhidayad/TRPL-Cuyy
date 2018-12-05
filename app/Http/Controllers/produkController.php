@@ -10,6 +10,8 @@ use App\Models\Toko;
 use Illuminate\Support\Facades\DB;
 use App\Models\keranjang;
 use App\Models\pembayaran;
+use Illuminate\Support\Facades\Input;
+use App\Models\pembayaran_saldo;
 
 
 class produkController extends Controller
@@ -171,8 +173,11 @@ public function viewpembayaran(){
           ->select(DB::raw('SUM(jumlah*harga) as total'))
           ->where('pembayaran.user_id', '=', Auth::user()->id)
           ->first();
+  $jumlah = pembayaran::where([['user_id', '=', Auth::user()->id], ['statuspembayaran', '=', 0]])->count();
+  $jumlahsaldo = pembayaran_saldo::where([['user_id', '=', Auth::user()->id], ['status', '=', 0]])->count();
+  $pembayaran = pembayaran_saldo::where('user_id', '=', Auth::user()->id)->get();
   //dd($view, $total);
-  return view('produk.pembayaran', compact('view', 'total'));
+  return view('produk.pembayaran', compact('view', 'total', 'pembayaran', 'jumlah', 'jumlahsaldo'));
 }
 else if(Auth::User()->level==1){
 $view = DB::table('pembayaran')
@@ -235,11 +240,22 @@ public function lihatkeranjang(){
 
 public function buktipembayaran(Request $request, $id){
   $transfer = pembayaran::where('idpembayaran','=',$id)->first();
-    // dd($transfer);
+    // dd(Input::file('buktipembayaran')->getClientOriginalName());
   $fileName = $request->file('buktipembayaran')->getClientOriginalName();
   $request->file('buktipembayaran')->move("buktitransfer/", $fileName);
   $transfer->buktitransfer = $fileName;
   $transfer->statuspembayaran = 2;
+  $transfer->save();
+  return redirect('/pembayaran');
+}
+
+public function uploadbukti(Request $request, $id){
+  $transfer = pembayaran_saldo::where('id_pembayaran','=', $id)->first();
+  $fileName = $request->file('buktisaldo')->getClientOriginalName();
+  $request->file('buktisaldo')->move("buktitransfer/", $fileName);
+  $transfer->bukti = $fileName;
+  $transfer->status = 1;
+  // dd($transfer);
   $transfer->save();
   return redirect('/pembayaran');
 }

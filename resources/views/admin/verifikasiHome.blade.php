@@ -44,9 +44,8 @@
     </a>
   </div>
   <div class="col-xs-6 col-md-6">
+    <a href="saldo">
     <img src="{{asset('adminn/saldo.png')}}" alt="...">
-    
-      
     </a>
   </div>
 

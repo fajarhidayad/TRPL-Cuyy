@@ -52,6 +52,14 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('penjualan', 'produkController@penjualan');
   Route::post('verifikasi/{id}', 'adminController@verifPesanan');
   Route::post('verifikasi/hapus/{id}', 'adminController@batalkanPesanan');
+  Route::get('topup-saldo', 'HomeController@topupp');
+  Route::get('topup/{saldo}', 'HomeController@isiSaldo');
+  Route::get('topup/bayar/{saldo}', 'HomeController@bayartopup');
+  Route::get('admin/saldo', 'adminController@saldo');
+  Route::post('buktisaldo/{id}', 'produkController@uploadbukti');
+  Route::post('admin/saldo/{id}', 'adminController@verifikasisaldo');
+  Route::post('admin/saldo/hapus/{id}', 'adminController@batalkansaldo');
+  Route::get('admin/tambahlelang', 'adminController@tambahlelang');
 });
 
 Route::get('/', function () {
@@ -60,7 +68,7 @@ Route::get('/', function () {
 Auth::routes();
   Route::get('/', 'produkController@tampil');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profile/{id?}', 'HomeController@profile');
+Route::get('/profile/{id}', 'HomeController@profile');
 Route::get('/cari', 'HomeController@cari');
 Route::get('/cari/filter/{kategori}', 'HomeController@filter');
 Route::resource('quotes', 'QuoteController', ['only' => ['index', 'show']]);

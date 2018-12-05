@@ -6,6 +6,20 @@
     <h1 style="font-size: 50px;">Selamat Datang, {{$user->name}}</h1>
        <h2>Kelola informasi profil Anda</h2>
     <hr><br>
+    <div class="row" style="width: 950px; margin: auto; height: 60px; padding: 10px; margin: 0px auto; background-color: rgba(0,0,0,0.5); font-size: 30px;">
+      <div class="col-md-2">
+        <p>Saldo :</p>
+      </div>
+      <div class="col-md-6">
+        <p>{{ $saldo->saldo }}</p>
+      </div>
+      <div class="col-md-2">
+        <a href="topup-saldo" class="btn btn-primary">Topup Saldo</a>
+      </div>
+      <div class="col-md-2">
+        <a href="" class="btn btn-primary">Tarik Saldo</a>
+      </div>
+    </div><br>
     <div class="row" style="width: 950px; margin: auto; height: 350px; padding: 10px; margin: 0px auto; background-color: rgba(0,0,0,0.5); font-size: 20px;">
       <div class="col-md-9">
         <div class="col-md-4">

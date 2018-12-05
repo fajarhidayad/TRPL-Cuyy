@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Auth;
 use App\Models\pembayaran;
+use App\Models\saldo;
+use App\Models\pembayaran_saldo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -58,10 +60,41 @@ class adminController extends Controller
         return redirect('admin/verifikasi/daftar-pembayaran');
     }
 
-    public function batalkanPesanan(){
+    public function batalkanPesanan($id){
         $batal = pembayaran::where('idpembayaran', '=', $id)->first();
+        $batal->buktitransfer = "";
         $batal->statuspembayaran = 4;
         $batal->save();
         return redirect('admin/verifikasi/daftar-pembayaran');
 }
+
+    public function saldo(){
+        $pembayaran = DB::table('pembayaran_saldo')
+                        ->join('users', 'pembayaran_saldo.user_id','=', 'users.id' )
+                        ->where('pembayaran_saldo.bukti', '!=', '')
+                        ->select('users.name', 'pembayaran_saldo.*')
+                        ->get();
+
+            return view('admin.saldo', compact('pembayaran'));
+        
+    }
+
+    public function verifikasisaldo($id){
+        $verif = pembayaran_saldo::find($id);
+        $saldo = saldo::where('idsaldo', '=', $id)->first();
+        $saldo->saldo += $verif->jumlah;
+        $saldo->save();
+        $verif->delete();
+        return redirect('admin/saldo');
+    }
+
+    public function batalkansaldo($id){
+        $verif = pembayaran_saldo::find($id);
+        $verif->delete();
+        return redirect('admin/saldo');
+    }
+
+    public function tambahlelang(){
+        return view('lelang.tambahlelang');
+    }
 }
