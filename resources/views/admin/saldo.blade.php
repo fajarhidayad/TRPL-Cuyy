@@ -65,7 +65,7 @@ a{
         <form method="post" action="{{ url('admin/saldo/'. $saldo->id_pembayaran) }}">
           <td>
             <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>&nbsp; {{csrf_field()}}</form>
-          <form method="post" action="">
+          <form method="post" action="{{ url('admin/saldo/hapus/'. $saldo->id_pembayaran) }}">
             <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>{{csrf_field()}}
           </td>
           </form>

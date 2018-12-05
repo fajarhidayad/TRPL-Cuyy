@@ -42,31 +42,35 @@ a{
 <body>
 
   <div class="container">
-    @if (session('alert'))
-    <div class="alert alert-warning">
-      {{ session('alert') }}
+    @if(session()->has('message'))
+    <div class="alert alert-success">
+      {{ session()->get('message') }}
     </div>
     @endif
-    <h2>Event Lelang</h2><br>
+    <h2>Event Lelang</h2>
+    <h3>Slot Tersisa : {{ $jumlah }}</h3>
     <div class="row">
       <div class="col-md-3">
-        <a href="tambahlelang" class="btn btn-primary">Tambah Event Lelang</a>
+        <a href="tambah" class="btn btn-primary">Tambah Produk Lelang</a>
       </div>
     </div><br>
-    @foreach($view as $data)
+    @foreach($isi as $data)
     <div class="col-xs-6 col-md-3">
       <a href="" class="thumbnail">
-        <img src="{{url('/eventlelang/'.$data->foto_event)}}" alt="barang" style="width:150px;height:150px">
+        <img src="{{url('/gambar/'.$data->foto_produk)}}" alt="barang" style="width:150px;height:150px">
       </a>
-      <h4>Nama Event :{{$data->nama_lelang}}</h4>
-      {{$data->deskripsi}}<br>
-      <form method="post" action="{{url('admin/lelang/tutup/'.$data->id_lelang)}}">
-        <button type="submit" class="btn btn-danger">Tutup Event Lelang</button>{{csrf_field()}}
-      </td>
-    </form>
+      <h4>Nama Produk Lelang : {{ $data->nama_produk }}</h4>
+      <h4>Harga Awal : {{ $data->harga_awal }}</h4>
+      <h4>{{ $data->deskripsi }}</h4>
+      @if ($data->iduser == Auth::user()->id)
+        {{-- expr --}}
+      @else
+      <a href="" class="btn btn-primary">Masuk Event Lelang</a>
+      @endif
+      
+    </div>
+    @endforeach
   </div>
-  @endforeach
-</div>
 
 </body>
 @endsection

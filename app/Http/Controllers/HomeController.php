@@ -7,6 +7,7 @@ use Auth;
 use App\Models\saldo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use App\Models\Toko;
 use App\Models\pembayaran_saldo;
 
@@ -129,31 +130,33 @@ public function ubah(Request $request)
   return view('user.ubah', compact('view'));
 }
 
-public function update(Request $request){
-  $profil = User::where('id', '=',Auth::User()->id)->first();
-  if (file_exists($request->foto)) {
-    $fileName   = $request->foto;
-    $request->file('foto')->move("fotoprofil/", $fileName);
-    $profil->foto = $request->foto;
-  }
-  $profil->name = $request->name;
-  $profil->email = $request->email;
-  $profil->jenis_kelamin = $request->jenis_kelamin;
-  $profil->alamat = $request->alamat;
-  $profil->kelurahan = '';
-  $profil->kecamatan = '';
-  $profil->kabupaten = '';
-  $profil->provinsi = '';
-  $profil->tanggal_lahir = $request->tanggal_lahir;
-  $profil->telepon = $request->telepon;
-  $profil->sosmed = $request->sosmed;
-  $profil->kartu_kredit = $request->kartu_kredit;
-  $profil->save();
+// public function update(Request $request){
+//   $profil = User::where('id', '=',Auth::User()->id)->first();
+//   dd($request->file('fotoprofil'));
+//   // if ($request->hasFile('foto')) {
+//     $fileName   = $request->foto;
+//     $request->file('foto')->move("fotoprofil/", $fileName);
+//     $profil->foto = $fileName;
+//   // }
 
+//   $profil->name = $request->name;
+//   $profil->email = $request->email;
+//   $profil->jenis_kelamin = $request->jenis_kelamin;
+//   $profil->alamat = $request->alamat;
+//   $profil->kelurahan = '';
+//   $profil->kecamatan = '';
+//   $profil->kabupaten = '';
+//   $profil->provinsi = '';
+//   $profil->tanggal_lahir = $request->tanggal_lahir;
+//   $profil->telepon = $request->telepon;
+//   $profil->sosmed = $request->sosmed;
+//   $profil->kartu_kredit = $request->kartu_kredit;
+//   $profil->save();
 
-  $user = User::where('id','=',Auth::User()->id)->first();
-  return view('profile', compact('user'));
-}
+//   $saldo = saldo::where('iduser', '=', Auth::User()->id)->first();
+//   $user = User::where('id','=', Auth::User()->id)->first();
+//   return view('profile', compact('user', 'saldo', 'profil'));
+// }
 
 public function error()
 {

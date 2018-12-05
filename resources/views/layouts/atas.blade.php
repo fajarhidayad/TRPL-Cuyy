@@ -35,7 +35,8 @@
         @auth
           <li >
           <a href="#">
-            <li><a href="/keranjang"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+            <li><a href="/keranjang"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+          </li>
           </a>
         </li>
         @endauth

@@ -17,7 +17,7 @@
     		</a>
   		</div>
   		<div class="col-xs-6 col-md-3">
-    		<a href="#">
+    		<a href="event/lelang">
       		<img src="adminn/auction.png" alt="auction">
     		</a>
   		</div>

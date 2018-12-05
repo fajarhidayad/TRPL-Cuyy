@@ -103,7 +103,10 @@ public function store(Request $request)
 
 
 $detail = toko::where('user_id','=',Auth::User()->id)->first();
-
+    
+    $this->validate($request, [
+        'foto' => 'mimes:jpeg,bmp,png', 
+    ]);
 
     $slug = $request->nama_produk . '-' .time();
     //dd($request);
@@ -116,6 +119,7 @@ $detail = toko::where('user_id','=',Auth::User()->id)->first();
       'harga' => $request ->harga,
       'stok' => $request ->stok,
       'berat' => $request ->berat,
+      'kategori' => $request->kategori,
       'kondisi' => $request->kondisi,
       'slug_produk' => $slug,
       'toko_id' => $detail->id_toko,
@@ -124,7 +128,7 @@ $detail = toko::where('user_id','=',Auth::User()->id)->first();
 
     $view = produk::all();
 
-    return view('/produk', compact('view'));
+    return view('produk.produk', compact('view'));
 }
 
 public function buatToko(){
@@ -276,59 +280,5 @@ public function penjualan(){
                 // dd($toko);
   return view('produk.penjualan', compact('toko'));
 }
-
-
-
-// public function show($slug)
-// {
-//     $quote = Quote::with('comments.user')->where('slug', $slug)->first();
-//
-//     if (empty($quote))
-//     abort(404);
-//
-//     return view('quotes.single', compact('quote'));
-// }
-//
-//     public function edit($id)
-//     {
-//       $quote = Quote::findOrFail($id);
-//       return view('quotes.edit', compact('quote'));
-//     }
-//
-//     /**
-//      * Update the specified resource in storage.
-//      *
-//      * @param  \Illuminate\Http\Request  $request
-//      * @param  int  $id
-//      * @return \Illuminate\Http\Response
-//      */
-//     public function update(Request $request, $id)
-//     {
-//         $quote = Quote::findOrFail($id);
-//         if($quote->isOwner())
-//           $quote->update([
-//             'title' => $request->title,
-//             'subject' => $request->subject,
-//           ]);
-//         else abort(403);
-//
-//         return redirect('quotes')->with('msg', 'kutipan berhasil diedit');
-//     }
-//
-//     /**
-//      * Remove the specified resource from storage.
-//      *
-//      * @param  int  $id
-//      * @return \Illuminate\Http\Response
-//      */
-//     public function destroy($id)
-//     {
-//       $quote = Quote::findOrFail($id);
-//       if($quote->isOwner())
-//         $quote->delete();
-//       else abort(403);
-//
-//       return redirect('quotes')->with('msg', 'kutipan berhasil dihapus');
-//     }
 
 }

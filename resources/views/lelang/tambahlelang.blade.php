@@ -13,10 +13,10 @@
   </div>
   @endif
   <h1>Tambah Event Lelang</h1>
-  <form method="POST" enctype="multipart/form-data" action="">
+  <form method="POST" enctype="multipart/form-data" action="{{url('admin/tambahlelang/buat')}}">
     <div class="form-group">
       <label for="title">Nama Event Lelang</label>
-      <input type="text" class="form-control" name="nama_produk" value="" placeholder="Tulis Nama Event">
+      <input type="text" class="form-control" name="nama_lelang" value="" placeholder="Tulis Nama Event">
     </div>
     <div class="form-group">
       <label for="deskripsi">Deskripsi Event</label>
@@ -24,7 +24,7 @@
     </div>
     <div class="form-group">
       <label for="foto">Masukan Gambar Event Lelang</label><br>
-      <input type="file" name="foto" value="">
+      <input type="file" name="foto_lelang" value="">
     </div>
 
     {{ csrf_field() }}

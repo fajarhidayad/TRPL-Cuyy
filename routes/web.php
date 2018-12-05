@@ -22,7 +22,7 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('produk/{id}', 'produkController@lihat');
   Route::get('produk/ubah/{idproduk}', 'produkController@ubah');
   Route::post('produk/ubah/{idproduk}', 'produkController@update');
-  Route::post('profile', 'HomeController@update');
+  Route::post('profile', 'userController@update');
   Route::delete('quotes-comment/{id}', 'QuoteCommentController@destroy');
   Route::get('buat-toko', 'produkController@buatToko');
   Route::post('produk/{slug}', 'produkController@store');
@@ -60,6 +60,12 @@ Route::group(['middleware' => 'auth'], function(){
   Route::post('admin/saldo/{id}', 'adminController@verifikasisaldo');
   Route::post('admin/saldo/hapus/{id}', 'adminController@batalkansaldo');
   Route::get('admin/tambahlelang', 'adminController@tambahlelang');
+  Route::post('admin/tambahlelang/buat', 'adminController@buatlelang');
+  Route::get('event/lelang', 'lelangController@lelangsetuju');
+  Route::get('event/lelang/masuk', 'lelangController@masuklelang');
+  Route::get('event/lelang/tambah', 'lelangController@tambahproduk');
+  Route::post('event/lelang/tambah', 'lelangController@updateproduk');
+  Route::post('admin/lelang/tutup/{id}', 'adminController@tutuplelang');
 });
 
 Route::get('/', function () {
